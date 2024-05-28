@@ -20,15 +20,24 @@
 </template>
 
 <script setup lang="ts">
+import {useRouter} from "vue-router";
+
 const menuList = [
   {label: "首页", link: "/"},
+  {label: "关于", link: "/about"},
+  {label: "Vite 官方中文文档", link: "https://cn.vitejs.dev/"},
   {label: "Arco Design", link: "https://arco.design/"},
   {label: "Vue.js", link: "https://arco.design/"},
   {label: "Vue Router", link: "https://router.vuejs.org/zh/"},
 ]
+const router = useRouter();
 
-const ClickHandler = (key: any) => {
-  window.open(key, '_blank')
+const ClickHandler = (key: string) => {
+  if (key.startsWith('http')) {
+    window.open(key, '_blank')
+  } else {
+    router.push({path: key})
+  }
 }
 </script>
 <style scoped>

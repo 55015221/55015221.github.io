@@ -17,6 +17,7 @@
     "@types/node": "^20.12.12",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
+    "dayjs": "^1.11.11",
     "nprogress": "^0.2.0",
     "prettier": "^3.2.5",
     "scss": "^0.2.4",

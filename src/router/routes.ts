@@ -17,6 +17,12 @@ const staticRoutes: Array<RouteRecordRaw> = [
                 meta: {title: '登录'},
             },
             {
+                path: 'about',
+                name: 'about',
+                component: () => import('@/views/about/index.vue'),
+                meta: {title: '登录'},
+            },
+            {
                 path: '/:all(.*)*', // 404路由
                 name: 'notFound',
                 component: () => import('@/views/error/index.vue'),

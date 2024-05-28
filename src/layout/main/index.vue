@@ -12,8 +12,7 @@
 
 <style scoped lang="scss" >
 .arco-main{
-  background: #f8f8f8;
-  height: calc(100vh - 280px) !important;
+  height: calc(100vh - 240px) !important;
 }
 .fade-enter-active,
 .fade-leave-active {
