@@ -18,6 +18,7 @@ export default defineConfig(({mode}: ConfigEnv): UserConfig => {
         plugins: [vue()],
         build: {
             outDir: "docs",
+            chunkSizeWarningLimit: 1000,
             rollupOptions: {
                 output: {
                     // https://github.com/rollup/rollup/blob/master/src/utils/sanitizeFileName.ts
