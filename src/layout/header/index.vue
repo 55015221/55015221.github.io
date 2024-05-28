@@ -3,7 +3,6 @@
     <a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
       <a-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
         <div class="logo">
-          <a-image src="/assets/img/logo-with-shadow.png" width="40"/>GITHUB.IO
         </div>
       </a-menu-item>
       <a-menu-item v-for="(row) in menuList" :key="row.link">
@@ -38,7 +37,7 @@ const ClickHandler = (key: string) => {
 .logo {
   will-change: filter;
   transition: filter 300ms;
-  background-image: url("@/assets/img/logo-with-shadow.png") !important;
+  background: #2e2e32;
   cursor: pointer;
 }
 

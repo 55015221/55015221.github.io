@@ -7,7 +7,6 @@
       </div>
       <div class="image">
         <div class="image-box"></div>
-        <a-image src="/assets/img/logo-with-shadow.png" width="320"/>
       </div>
     </div>
 

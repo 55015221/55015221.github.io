@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import router from "@/router";
 import ArcoVue from '@arco-design/web-vue';
 import App from './App.vue';

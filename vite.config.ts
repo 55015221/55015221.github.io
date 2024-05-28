@@ -18,6 +18,21 @@ export default defineConfig(({mode}: ConfigEnv): UserConfig => {
         plugins: [vue()],
         build: {
             outDir: "docs",
+            rollupOptions: {
+                output: {
+                    // https://github.com/rollup/rollup/blob/master/src/utils/sanitizeFileName.ts
+                    // 兼容github pages 替换以_开头的文件，避免404
+                    sanitizeFileName(name) {
+                        const match = /^[a-z]:/i.exec(name);
+                        const driveLetter = match ? match[0] : '';
+                        // substr 是被淘汰語法，因此要改 slice
+                        return (
+                            driveLetter +
+                            name.slice(driveLetter.length).replace(/[\x00-\x1F\x7F<>*#"{}|^[\]`;?:&=+$,]/g, "")
+                        );
+                    },
+                },
+            },
         }
     }
 })
