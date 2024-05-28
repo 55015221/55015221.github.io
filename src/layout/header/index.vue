@@ -1,26 +1,21 @@
 <template>
-  <a-layout-header>
+  <div class="container">
     <a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
       <a-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
-        <div class="logo"
-             :style="{
-            width: '80px',
-            height: '30px',
-            borderRadius: '2px',
-            background: 'var(--color-fill-3)',
-            cursor: 'text',
-          }">logo
+        <div class="logo">
+          <a-image :src="logoWithShadow" width="40"/>GITHUB.IO
         </div>
       </a-menu-item>
       <a-menu-item v-for="(row) in menuList" :key="row.link">
         {{ row.label }}
       </a-menu-item>
     </a-menu>
-  </a-layout-header>
+  </div>
 </template>
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
+import logoWithShadow from '@/assets/img/logo-with-shadow.png'
 
 const menuList = [
   {label: "首页", link: "/"},
@@ -40,7 +35,14 @@ const ClickHandler = (key: string) => {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+.logo {
+  will-change: filter;
+  transition: filter 300ms;
+  background-image: url("@/assets/img/logo-with-shadow.png") !important;
+  cursor: pointer;
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

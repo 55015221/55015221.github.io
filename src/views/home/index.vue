@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Carousel/>
+  <Carousel/>
+  <div class="container">
     <a-row :gutter="20">
       <a-col :span="8" v-for="row in cardList">
         <a-card>
