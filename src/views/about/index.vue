@@ -7,7 +7,7 @@
       </div>
       <div class="image">
         <div class="image-box"></div>
-        <a-image :src="logoWithShadow" width="320"/>
+        <a-image src="/assets/img/logo-with-shadow.png" width="320"/>
       </div>
     </div>
 
@@ -57,7 +57,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import logoWithShadow from '@/assets/img/logo-with-shadow.png'
 </script>
 
 <style lang="scss" scoped>
