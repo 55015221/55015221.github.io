@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       vue:
-        specifier: ^3.4.21
+        specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
       vue-router:
-        specifier: '4'
+        specifier: ^4.3.2
         version: 4.3.2(vue@3.4.27(typescript@5.4.5))
     devDependencies:
       '@arco-design/web-vue':
@@ -40,13 +40,13 @@ importers:
         specifier: ^0.2.4
         version: 0.2.4
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.4.5
         version: 5.4.5
       vite:
-        specifier: ^5.2.0
+        specifier: ^5.2.11
         version: 5.2.11(@types/node@20.12.12)(sass@1.77.2)
       vue-tsc:
-        specifier: ^2.0.6
+        specifier: ^2.0.19
         version: 2.0.19(typescript@5.4.5)
 
 packages:
