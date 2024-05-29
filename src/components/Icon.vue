@@ -1,6 +1,6 @@
 <template>
-	<svg aria-hidden="true">
-		<use :xlink:href="iconName" :fill="color" />
+	<svg aria-hidden="true" :style="`display: inline-block;width:${size}em; height: ${size}em;`">
+		<use :xlink:href="getIconName" :fill="color" />
 	</svg>
 </template>
 
@@ -19,9 +19,10 @@ interface IconProps {
 
 const props = withDefaults(defineProps<IconProps>(), {
 	name: "", // 图标组件名字
-	size: 14, // 大小
+	size: 6, // 大小
 	color: "#000000", // 颜色
 });
 
-const iconName = computed(() => `#icon-${props.name}`);
+const getIconName = computed(() => `#icon-${props.name}`);
 </script>
+<style lang="scss" scoped></style>
