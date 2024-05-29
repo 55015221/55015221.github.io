@@ -17,11 +17,13 @@
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "dayjs": "^1.11.11",
+    "fast-glob": "^3.3.2",
     "nprogress": "^0.2.0",
     "prettier": "^3.2.5",
     "scss": "^0.2.4",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^2.0.19"
   }
 }

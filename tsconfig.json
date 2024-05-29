@@ -14,6 +14,7 @@
     "noEmit": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "types": ["vite/client", "vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": ["src/*"]
     },
