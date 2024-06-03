@@ -34,19 +34,19 @@
 			<div class="volcfe-footer-pc">
 				<div class="volcfe-footer-content-pc flex">
 					<div style="flex: 1 1 0%">
-						<a href="https://www.volcengine.com" target="_blank" rel="noreferrer">
-							<img loading="lazy" src="//portal.volccdn.com/obj/volcfe/logo/appbar_logo_dark.2.svg" alt="logo" style="display: block" />
+						<a href="" target="_blank" rel="noreferrer">
+							<img loading="lazy" src="/favicon/android-chrome-192x192.png" alt="logo" style="width: 80px; display: block" />
 						</a>
 					</div>
 					<div class="flex" style="flex: 1 1 0%">
 						<div style="padding-right: 16px">
 							<div class="volcfe-pc-menu-title">关于我们</div>
 							<div class="volcfe-pc-menu flex">
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/about">为什么选火山</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/docs">文档中心</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/contact">联系我们</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/jobs">人才招聘</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/friend_links">友情链接</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/about">为什么选山火</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/docs">文档中心</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/contact">联系我们</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/jobs">人才招聘</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/friend_links">友情链接</a></div>
 							</div>
 						</div>
 					</div>
@@ -54,17 +54,13 @@
 						<div style="padding-right: 16px">
 							<div class="volcfe-pc-menu-title">产品</div>
 							<div class="volcfe-pc-menu flex">
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/ecs">云服务器</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/gpu">GPU云服务器</a></div>
-								<div class="volcfe-pc-menu-link">
-									<a></a><a target="_blank" href="https://www.volcengine.com/product/ml-platform">机器学习平台</a>
-								</div>
-								<div class="volcfe-pc-menu-link">
-									<a></a><a target="_blank" href="https://www.volcengine.com/product/veCDP">客户数据平台 VeCDP</a>
-								</div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/feilian">飞连</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/live">视频直播</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/product/list">全部产品</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/ecs">云服务器</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/gpu">GPU云服务器</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/ml-platform">机器学习平台</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/veCDP">客户数据平台 VeCDP</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/feilian">飞连</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/live">视频直播</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/product/list">全部产品</a></div>
 							</div>
 						</div>
 					</div>
@@ -72,19 +68,13 @@
 						<div style="padding-right: 16px">
 							<div class="volcfe-pc-menu-title">解决方案</div>
 							<div class="volcfe-pc-menu flex">
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/solutions/automotive">汽车行业</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/solutions/finance">金融行业</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/solutions/social">文娱行业</a></div>
-								<div class="volcfe-pc-menu-link">
-									<a></a><a target="_blank" href="https://www.volcengine.com/solutions/Bio-OS-genomics">医疗健康行业</a>
-								</div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/solutions/smart-media">传媒行业</a></div>
-								<div class="volcfe-pc-menu-link">
-									<a></a><a target="_blank" href="https://www.volcengine.com/solutions/cultural-tourism-group">智慧文旅</a>
-								</div>
-								<div class="volcfe-pc-menu-link">
-									<a></a><a target="_blank" href="https://www.volcengine.com/solutions/GeneralConsumption">大消费</a>
-								</div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/automotive">汽车行业</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/finance">金融行业</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/social">文娱行业</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/Bio-OS-genomics">医疗健康行业</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/smart-media">传媒行业</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/cultural-tourism-group">智慧文旅</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/solutions/GeneralConsumption">大消费</a></div>
 							</div>
 						</div>
 					</div>
@@ -92,9 +82,9 @@
 						<div style="padding-right: 16px">
 							<div class="volcfe-pc-menu-title">服务与支持</div>
 							<div class="volcfe-pc-menu flex">
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/beian">备案服务</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/contact/product">服务咨询</a></div>
-								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://www.volcengine.com/contact/advisory">建议与反馈</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/beian">备案服务</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/contact/product">服务咨询</a></div>
+								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="/contact/advisory">建议与反馈</a></div>
 								<div class="volcfe-pc-menu-link"><a></a><a target="_blank" href="https://compliance.bytedance.com/report/pcReport">投诉举报</a></div>
 							</div>
 						</div>
@@ -103,48 +93,28 @@
 						<div style="padding-right: 16px">
 							<div class="volcfe-pc-menu-title">联系我们</div>
 							<div class="volcfe-pc-menu flex">
-								<div class="volcfe-pc-menu-link">
-									<a>业务咨询：</a><a target="_blank" href="mailto:service@volcengine.com">service@volcengine.com</a>
-								</div>
-								<div class="volcfe-pc-menu-link"><a>市场合作：</a><a href="mailto:marketing@volcengine.com">marketing@volcengine.com</a></div>
-								<div class="volcfe-pc-menu-link"><a>电话：</a><a target="_blank" href="tel://400-850-0030">400-850-0030</a></div>
-								<div class="volcfe-pc-menu-link"><a>地址：</a><a>北京市海淀区北三环西路甲18号院大钟寺广场1号楼</a></div>
+								<div class="volcfe-pc-menu-link"><a>业务咨询：</a><a target="_blank" href="mailto:service@volcengine.com">service@xxxxx.com</a></div>
+								<div class="volcfe-pc-menu-link"><a>市场合作：</a><a href="mailto:marketing@volcengine.com">marketing@xxxxx.com</a></div>
+								<div class="volcfe-pc-menu-link"><a>电话：</a><a target="_blank" href="tel://400-850-0030">400-xxx-xxxx</a></div>
+								<div class="volcfe-pc-menu-link"><a>地址：</a><a>北京市海淀区北三环寺广场1号楼</a></div>
 							</div>
 						</div>
 						<div class="flex" style="padding-top: 8px">
 							<div class="volcfe-footer-qrcode-item-wrap">
 								<div class="volcfe-footer-qrcode-item">
-									<img
-										class="volcfe-footer-qrcode"
-										loading="lazy"
-										src="https://portal.volccdn.com/obj/volcfe/footer/shipinhao.jpeg"
-										alt=""
-										style="opacity: 1"
-									/>
+									<img class="volcfe-footer-qrcode" loading="lazy" src="/favicon/android-chrome-192x192.png" alt="" style="opacity: 1" />
 								</div>
 								<a class="volcfe-footer-qrcode-text">微信公众号</a>
 							</div>
 							<div class="volcfe-footer-qrcode-item-wrap">
 								<div class="volcfe-footer-qrcode-item">
-									<img
-										class="volcfe-footer-qrcode"
-										loading="lazy"
-										src="https://portal.volccdn.com/obj/volcfe/footer/douyinhao.jpeg"
-										alt=""
-										style="opacity: 1"
-									/>
+									<img class="volcfe-footer-qrcode" loading="lazy" src="/favicon/android-chrome-192x192.png" alt="" style="opacity: 1" />
 								</div>
 								<a class="volcfe-footer-qrcode-text">抖音号</a>
 							</div>
 							<div class="volcfe-footer-qrcode-item-wrap">
 								<div class="volcfe-footer-qrcode-item">
-									<img
-										class="volcfe-footer-qrcode"
-										loading="lazy"
-										src="https://portal.volccdn.com/obj/volcfe/footer/gongzhonghao.jpeg"
-										alt=""
-										style="opacity: 1"
-									/>
+									<img class="volcfe-footer-qrcode" loading="lazy" src="/favicon/android-chrome-192x192.png" alt="" style="opacity: 1" />
 								</div>
 								<a class="volcfe-footer-qrcode-text">视频号</a>
 							</div>
