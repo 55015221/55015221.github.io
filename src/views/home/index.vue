@@ -1,5 +1,5 @@
 <template>
-	<!--	<Carousel />-->
+	<Carousel />
 	<Card />
 	<DividerCard />
 	<Tabs />
