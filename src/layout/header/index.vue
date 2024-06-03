@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="logo">
-			<img src="/favicon/android-chrome-192x192.png" :height="50" />
+			<img src="/favicon/android-chrome-192x192.png" :height="60" />
 		</div>
 		<a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
 			<a-menu-item v-for="row in menuList" :key="row.link">
@@ -36,8 +36,15 @@ const ClickHandler = (key: string) => {
 .container {
 	display: flex;
 }
+.arco-menu-light {
+	background: unset;
+}
+.logo {
+	width: 120px;
+	padding: 10px 0;
+	text-align: center;
+}
 .logo img {
-	padding: 5px 30px 5px 0;
 	z-index: 100;
 	will-change: filter;
 	transition: filter 300ms;
