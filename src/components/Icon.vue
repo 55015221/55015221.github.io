@@ -19,7 +19,7 @@ interface IconProps {
 
 const props = withDefaults(defineProps<IconProps>(), {
 	name: "", // 图标组件名字
-	size: 14, // 大小
+	size: 30, // 大小
 	color: "#000000", // 颜色
 });
 
