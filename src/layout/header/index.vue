@@ -1,9 +1,9 @@
 <template>
 	<div class="container">
+		<div class="logo">
+			<img src="/favicon/android-chrome-192x192.png" :height="50" />
+		</div>
 		<a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
-			<a-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
-				<div class="logo"></div>
-			</a-menu-item>
 			<a-menu-item v-for="row in menuList" :key="row.link">
 				{{ row.label }}
 			</a-menu-item>
@@ -33,10 +33,14 @@ const ClickHandler = (key: string) => {
 };
 </script>
 <style lang="scss" scoped>
-.logo {
+.container {
+	display: flex;
+}
+.logo img {
+	padding: 5px 30px 5px 0;
+	z-index: 100;
 	will-change: filter;
 	transition: filter 300ms;
-	background: #2e2e32;
 	cursor: pointer;
 }
 
