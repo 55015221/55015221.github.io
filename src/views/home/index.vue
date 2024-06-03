@@ -28,9 +28,12 @@
 	<section>
 		<Tabs />
 	</section>
+
+	<ColList />
 </template>
 <script setup lang="ts">
 import Carousel from "@/components/Carousel.vue";
+import ColList from "./components/ColList.vue";
 
 import { reactive } from "vue";
 import Icon from "@/components/Icon.vue";

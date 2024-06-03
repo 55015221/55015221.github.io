@@ -1,5 +1,5 @@
 <template>
-	<svg aria-hidden="true" :style="`display: inline-block;width:${size}em; height: ${size}em;`">
+	<svg aria-hidden="true" :width="size" :height="size">
 		<use :xlink:href="getIconName" :fill="color" />
 	</svg>
 </template>
@@ -19,7 +19,7 @@ interface IconProps {
 
 const props = withDefaults(defineProps<IconProps>(), {
 	name: "", // 图标组件名字
-	size: 6, // 大小
+	size: 14, // 大小
 	color: "#000000", // 颜色
 });
 
