@@ -1,18 +1,21 @@
 <template>
-	<div class="container">
-		<div class="logo">
-			<img src="/favicon/android-chrome-192x192.png" :height="60" />
+	<Container>
+		<div class="flex">
+			<div class="logo">
+				<img src="/favicon/android-chrome-192x192.png" :height="60" />
+			</div>
+			<a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
+				<a-menu-item v-for="row in menuList" :key="row.link">
+					{{ row.label }}
+				</a-menu-item>
+			</a-menu>
 		</div>
-		<a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
-			<a-menu-item v-for="row in menuList" :key="row.link">
-				{{ row.label }}
-			</a-menu-item>
-		</a-menu>
-	</div>
+	</Container>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import Container from "@/components/Container.vue";
 
 const menuList = [
 	{ label: "首页", link: "/" },
@@ -33,8 +36,9 @@ const ClickHandler = (key: string) => {
 };
 </script>
 <style lang="scss" scoped>
-.container {
+.flex {
 	display: flex;
+	background: #fff;
 }
 .arco-menu-light {
 	background: unset;

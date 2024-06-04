@@ -1,8 +1,8 @@
 <template>
 	<section>
-		<div class="container">
+		<Container>
 			<a-row :gutter="10">
-				<a-col :xs="24" :sm="24" :md="8" :lg="8" v-for="card in cardList">
+				<a-col :xs="12" :sm="12" :md="8" :lg="6" v-for="card in cardList">
 					<a-card>
 						<div class="item">
 							<Icon :name="card.icon" :size="50" />
@@ -14,12 +14,13 @@
 					</a-card>
 				</a-col>
 			</a-row>
-		</div>
+		</Container>
 	</section>
 </template>
 <script setup lang="ts">
 import { reactive } from "vue";
 import Icon from "@/components/Icon.vue";
+import Container from "@/components/Container.vue";
 
 const cardList = reactive([
 	{ title: "极速的服务启动", description: "使用原生 ESM 文件，无需打包!", icon: "tos_1" },

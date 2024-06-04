@@ -1,6 +1,7 @@
 <template>
 	<Carousel />
 	<Card />
+	<GoodCard />
 	<DividerCard />
 	<Tabs />
 </template>
@@ -9,6 +10,7 @@ import Carousel from "@/components/Carousel.vue";
 import DividerCard from "./components/DividerCard.vue";
 import Tabs from "@/views/home/components/tabs.vue";
 import Card from "@/views/home/components/Card.vue";
+import GoodCard from "@/views/home/components/GoodCard.vue";
 </script>
 
 <style lang="scss" scoped></style>
