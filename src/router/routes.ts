@@ -14,13 +14,13 @@ const staticRoutes: Array<RouteRecordRaw> = [
 				path: "/",
 				name: "home",
 				component: () => import("@/views/home/index.vue"),
-				meta: { title: "登录" },
+				meta: { title: "首页" },
 			},
 			{
 				path: "about",
 				name: "about",
 				component: () => import("@/views/about/index.vue"),
-				meta: { title: "登录" },
+				meta: { title: "关于" },
 			},
 			{
 				path: "/:all(.*)*", // 404路由
