@@ -2,6 +2,7 @@ import { UserConfig, ConfigEnv, loadEnv, defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import { viteMockServe } from "vite-plugin-mock";
 
 // 定义别名
 const alias: Record<string, string> = {
@@ -13,6 +14,7 @@ const alias: Record<string, string> = {
 export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
   // 加载环境变量
   const env = loadEnv(mode, process.cwd());
+  console.log(env);
   return {
     root: process.cwd(),
     resolve: { alias },
@@ -24,6 +26,10 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       createSvgIconsPlugin({
         iconDirs: [resolve(process.cwd(), "src/assets/svg")],
         symbolId: "icon-[dir]-[name]",
+      }),
+      viteMockServe({
+        mockPath: "./mock",
+        watchFiles: true,
       }),
     ],
     build: {
