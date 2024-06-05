@@ -5,10 +5,10 @@
 				<a-col :xs="12" :sm="12" :md="8" :lg="6" v-for="card in cardList">
 					<a-card>
 						<div class="item">
-							<Icon :name="card.icon" :size="50" />
-							<div style="margin-left: 10px">
-								<strong>{{ card.title }}</strong>
-								<p>{{ card.description }}</p>
+							<Icon :name="card.icon" :size="60" />
+							<div>
+								<h2 class="title">{{ card.title }}</h2>
+								<p class="description">{{ card.description }}</p>
 							</div>
 						</div>
 					</a-card>
@@ -35,25 +35,27 @@ const cardList = reactive([
 <style scoped lang="scss">
 section {
 	background: #fff;
+	.title {
+		line-height: 24px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.description {
+		line-height: 24px;
+		font-size: 14px;
+		font-weight: 500;
+	}
 
 	.arco-row {
 		.arco-col {
 			.item {
 				display: flex;
+				flex-direction: column;
 			}
 			.icon {
 				height: 56px;
 				width: 56px;
 			}
-
-			.title {
-				font-weight: 500;
-				margin-bottom: 4px;
-				color: #020814;
-				font-size: 16px;
-				position: relative;
-			}
-
 			.subtitle {
 				color: #41464f;
 				font-size: 12px;

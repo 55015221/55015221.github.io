@@ -8,7 +8,10 @@
 							<img :alt="card.title" src="/favicon/android-chrome-512x512.png" />
 						</a>
 					</template>
-					<a-card-meta :title="card.title">
+					<a-card-meta>
+						<template #title>
+							<a href="">{{ card.title }}</a>
+						</template>
 						<template #description>
 							{{ card.description }}
 						</template>
@@ -47,6 +50,7 @@ const cardList = reactive([
 	}
 }
 .arco-card {
+	height: 100%;
 	.arco-card-meta-title {
 		font-size: 1.3rem;
 	}
