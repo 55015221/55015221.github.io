@@ -1,7 +1,7 @@
 <template>
   <section>
     <Container>
-      <a-grid :cols="{ xs: 1, sm: 2, md: 3, lg: 3, xl: 4, xxl: 5 }" :colGap="10" :rowGap="10">
+      <a-grid :cols="{ xs: 1, sm: 2, md: 2, lg: 3, xl: 4, xxl: 5 }" :colGap="10" :rowGap="10">
         <a-grid-item v-for="card in cardList">
           <a-card :bordered="false">
             <template #cover>
@@ -11,6 +11,9 @@
             </template>
             <a-card-meta>
               <template #title>
+                <div>
+                  <small>{{ card.subtitle }}</small>
+                </div>
                 <a href="">{{ card.title }}</a>
               </template>
               <template #description>

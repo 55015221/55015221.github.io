@@ -11,6 +11,9 @@ export default [
           {
             id: "@id",
             title: "@ctitle",
+            subtitle() {
+              return `MT-${Mock.mock('@date("y-M-d")')}`;
+            },
             description: "@cword(30)",
             thumbnail() {
               return Mock.Random.image("500x500", Mock.Random.color(), "#FFF", "png");
