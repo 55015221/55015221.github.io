@@ -5,7 +5,7 @@
         <a-card :bordered="false">
           <template #cover>
             <a class="image" href="" :title="card.title">
-              <img :alt="card.title" src="/favicon/android-chrome-512x512.png" />
+              <img :alt="card.title" :src="card.thumbnail" />
             </a>
           </template>
           <a-card-meta>
@@ -23,9 +23,11 @@
 </template>
 <script setup lang="ts">
 import Container from "@/components/Container.vue";
+
 defineOptions({
   name: "GoodCard",
 });
+
 interface Props {
   loading: boolean;
   data: Array<any>;

@@ -12,17 +12,16 @@ export default [
             id: "@id",
             title: "@ctitle",
             description: "@cword(30)",
+            thumbnail() {
+              return Mock.Random.image("300x300", Mock.Random.color(), "#FFF", "png");
+            },
             icon: "tos_1",
-            createTime: "@datetime(yy-MM-dd HH:mm:ss)",
-            text: "@cparagraph(5)",
+            created_at: "@datetime(yy-MM-dd HH:mm:ss)",
             content() {
-              return JSON.stringify({ text: this.text });
+              return JSON.stringify({ text: "@cparagraph(15)" });
             },
             "contentType|0-3": 0,
             "serviceUnreadCount|0-10": 0,
-            thumbnail() {
-              return Mock.Random.image("40x40", Mock.Random.color(), "#FFF", "png");
-            },
           },
         ],
       });
