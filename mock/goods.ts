@@ -13,7 +13,7 @@ export default [
             title: "@ctitle",
             description: "@cword(30)",
             thumbnail() {
-              return Mock.Random.image("300x300", Mock.Random.color(), "#FFF", "png");
+              return Mock.Random.image("500x500", Mock.Random.color(), "#FFF", "png");
             },
             icon: "tos_1",
             created_at: "@datetime(yy-MM-dd HH:mm:ss)",
