@@ -1,7 +1,7 @@
 <template>
   <Container>
     <a-grid :cols="{ xs: 2, sm: 2, md: 3, lg: 3, xl: 4, xxl: 5 }" :colGap="20" :rowGap="20">
-      <a-grid-item v-for="card in data">
+      <a-grid-item v-for="card in cardList">
         <a-card :bordered="false">
           <template #cover>
             <a class="image" href="" :title="card.title">
@@ -23,6 +23,7 @@
 </template>
 <script setup lang="ts">
 import Container from "@/components/Container.vue";
+import { computed } from "vue";
 
 defineOptions({
   name: "GoodCard",
@@ -37,6 +38,10 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
   data: () => [],
 });
+
+const cardList = computed(() => {
+  return props.data.filter((_, i) => i < 8);
+});
 </script>
 
 <style scoped lang="scss">
@@ -45,8 +50,13 @@ const props = withDefaults(defineProps<Props>(), {
   box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
 
   .image {
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
+}
+
+:deep(.arco-card-cover) {
+  padding: 5px;
+  background: #fff;
 }
 
 .arco-card {
@@ -66,22 +76,21 @@ const props = withDefaults(defineProps<Props>(), {
       center no-repeat;
     background-size: 20% 20%;
     transition: all ease-in-out 0.3s;
-    transform: scale(1.2);
-  }
 
-  img {
-    border: 0;
-    vertical-align: middle;
-    max-width: 100%;
-    position: absolute;
-    inset: 0;
-    object-fit: contain;
-  }
+    &:before {
+      padding-top: 100%;
+      content: "";
+      display: block;
+    }
 
-  .image:before {
-    padding-top: 100%;
-    content: "";
-    display: block;
+    img {
+      border: 0;
+      vertical-align: middle;
+      max-width: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: contain;
+    }
   }
 }
 </style>
