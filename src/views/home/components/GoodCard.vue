@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <a-grid :cols="{ xs: 2, sm: 2, md: 3, lg: 3, xl: 4, xxl: 5 }" :colGap="15" :rowGap="15">
+    <a-grid :cols="{ xs: 2, sm: 2, md: 3, lg: 3, xl: 4, xxl: 5 }" :colGap="20" :rowGap="20">
       <a-grid-item v-for="card in data">
         <a-card :bordered="false">
           <template #cover>
@@ -53,11 +53,11 @@ const props = withDefaults(defineProps<Props>(), {
   height: 100%;
 
   .arco-card-meta-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .arco-card-meta-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .image {
