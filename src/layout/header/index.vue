@@ -20,6 +20,7 @@ import Container from "@/components/Container.vue";
 const menuList = [
   { label: "首页", link: "/" },
   { label: "关于", link: "/about" },
+  { label: "产品中心", link: "/product" },
   { label: "Vite 官方中文文档", link: "https://cn.vitejs.dev/" },
   { label: "Arco Design", link: "https://arco.design/" },
   { label: "Vue.js", link: "https://cn.vuejs.org/" },
