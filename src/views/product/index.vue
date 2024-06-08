@@ -5,11 +5,14 @@
         <li class="item" v-for="item in dataList" :key="item.id">
           <div class="card">
             <div class="media">
-              <img :src="item.thumbnail" alt="" />
+              <img src="/img/product/05-WorkingTables-hover.webp" alt="" />
             </div>
             <div class="card-body">
-              <h2 class="title">{{ item.title }}</h2>
               <div class="subtitle">{{ item.subtitle }}</div>
+              <h3 class="title">
+                <a href="">{{ item.title }}</a>
+              </h3>
+              {{ item.description }}
             </div>
           </div>
         </li>
@@ -17,16 +20,38 @@
     </Container>
   </section>
 </template>
+<script setup lang="ts">
+import Container from "@/components/Container.vue";
+import { onMounted, reactive } from "vue";
+import { fetchData } from "@/api/goods.ts";
+interface CardType {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  content: string;
+  thumbnail: string;
+  icon: string;
+  created_at: string;
+}
+const dataList = reactive<Array<CardType>>([]);
 
+onMounted(async () => {
+  fetchData().then((response) => {
+    Object.assign(dataList, response.data.data);
+  });
+});
+</script>
 <style scoped lang="scss">
 section {
-  background: rgba(247, 247, 247, 1);
+  font-size: 12px;
+  background: #f4f3f3;
   padding: 30px 0;
 
   .wrapper {
     display: grid;
     gap: 0.8rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 
     .item {
       position: relative;
@@ -43,6 +68,21 @@ section {
       background-color: #fff;
       border-radius: 0.6rem;
       overflow: hidden;
+
+      .card-body {
+        padding: 15px;
+        .title {
+          font-size: 1rem;
+          font-weight: bold;
+          margin: 5px 0;
+          > a {
+            color: #000;
+          }
+        }
+        .subtitle {
+          font-size: 0.8rem;
+        }
+      }
 
       .media {
         position: relative;
@@ -92,16 +132,3 @@ section {
   }
 }
 </style>
-<script setup lang="ts">
-import Container from "@/components/Container.vue";
-import { onMounted, reactive } from "vue";
-import { fetchData } from "@/api/goods.ts";
-
-const dataList = reactive([]);
-
-onMounted(async () => {
-  fetchData().then((response) => {
-    Object.assign(dataList, response.data.data);
-  });
-});
-</script>
