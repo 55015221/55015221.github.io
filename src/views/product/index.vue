@@ -75,6 +75,7 @@ section {
       display: block;
       height: 100%;
       text-decoration: none;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
       background-color: #fff;
       border-radius: 0.6rem;
       overflow: hidden;
