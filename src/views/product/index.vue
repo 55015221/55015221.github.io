@@ -4,9 +4,10 @@
       <ul class="wrapper">
         <li class="item" v-for="(item, index) in dataList" :key="item.id">
           <div class="card">
-            <div class="media">
-              <img :src="`/img/product/${imageList[index % 4]}`" alt="" />
-            </div>
+            <a class="media" href="">
+              <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
+              <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
+            </a>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
               <h3 class="title">
@@ -105,6 +106,14 @@ section {
           display: block;
         }
 
+        img:first-child {
+          opacity: 1;
+        }
+
+        img:last-child {
+          opacity: 0;
+        }
+
         img {
           position: absolute;
           inset: 0;
@@ -112,6 +121,17 @@ section {
           height: auto;
           vertical-align: middle;
           object-fit: cover;
+          transition: all ease-in-out 0.5s;
+        }
+
+        &:hover {
+          img:first-child {
+            opacity: 0 !important;
+          }
+
+          img:last-child {
+            opacity: 1 !important;
+          }
         }
       }
 
