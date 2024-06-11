@@ -2,10 +2,10 @@
   <section>
     <Container>
       <ul class="wrapper">
-        <li class="item" v-for="item in dataList" :key="item.id">
+        <li class="item" v-for="(item, index) in dataList" :key="item.id">
           <div class="card">
             <div class="media">
-              <img src="/img/product/05-WorkingTables-hover.webp" alt="" />
+              <img :src="`/img/product/${imageList[index % 4]}`" alt="" />
             </div>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
@@ -24,6 +24,7 @@
 import Container from "@/components/Container.vue";
 import { onMounted, reactive } from "vue";
 import { fetchData } from "@/api/goods.ts";
+
 interface CardType {
   id: number;
   title: string;
@@ -34,7 +35,10 @@ interface CardType {
   icon: string;
   created_at: string;
 }
+
 const dataList = reactive<Array<CardType>>([]);
+
+const imageList = ["01-CabinetsShelves-Color-02.webp", "01-Chairs-Color-02.webp", "01-Printers-hover.webp", "08-Printers-hover.webp"];
 
 onMounted(async () => {
   fetchData().then((response) => {
@@ -71,14 +75,17 @@ section {
 
       .card-body {
         padding: 15px;
+
         .title {
           font-size: 1rem;
           font-weight: bold;
           margin: 5px 0;
+
           > a {
             color: #000;
           }
         }
+
         .subtitle {
           font-size: 0.8rem;
         }
