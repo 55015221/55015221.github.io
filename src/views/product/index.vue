@@ -4,20 +4,20 @@
       <ul class="wrapper">
         <li class="item" v-for="(item, index) in dataList" :key="item.id">
           <div class="card">
-            <div class="media-body">
+            <div class="card-img-top">
               <a class="media" href="">
                 <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
                 <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
               </a>
+            </div>
+            <div class="card-img-overlay">
+              <div style="padding: 1rem">{{ item.description }}</div>
             </div>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
               <h3 class="title">
                 <a href="">{{ item.title }}</a>
               </h3>
-              {{ item.description }}
-            </div>
-            <div class="card-overlay">
               {{ item.description }}
             </div>
           </div>
@@ -80,12 +80,21 @@ section {
       overflow: hidden;
 
       &:hover {
-        .card-overlay {
-          height: 10%;
+        .card-img-overlay {
+          height: 15%;
+        }
+
+        img:first-child {
+          opacity: 0 !important;
+        }
+
+        img:last-child {
+          opacity: 1 !important;
+          transform: scale(1.25);
         }
       }
 
-      .card-overlay {
+      .card-img-overlay {
         position: absolute;
         left: 0;
         bottom: 30%;
@@ -95,7 +104,7 @@ section {
         transition: height ease-in-out 0.35s;
       }
 
-      .media-body {
+      .card-img-top {
         overflow: hidden;
         padding: 10px;
       }
@@ -129,17 +138,6 @@ section {
           vertical-align: middle;
           object-fit: cover;
           transition: all ease-in-out 0.5s;
-        }
-
-        &:hover {
-          img:first-child {
-            opacity: 0 !important;
-          }
-
-          img:last-child {
-            opacity: 1 !important;
-            transform: scale(1.25);
-          }
         }
       }
 
