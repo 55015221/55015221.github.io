@@ -3,14 +3,14 @@
     <Container>
       <ul class="wrapper">
         <li class="item" v-for="(item, index) in dataList" :key="item.id">
-          <div class="card">
+          <article class="card">
             <div class="card-media-top">
               <a class="media" href="">
                 <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
                 <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
               </a>
             </div>
-            <div class="card-img-overlay">
+            <div class="card-media-overlay">
               <div style="padding: 1rem">{{ item.description }}</div>
             </div>
             <div class="card-body">
@@ -20,7 +20,7 @@
               </h3>
               {{ item.description }}
             </div>
-          </div>
+          </article>
         </li>
       </ul>
     </Container>
@@ -81,8 +81,8 @@ section {
       overflow: hidden;
 
       &:hover {
-        .card-img-overlay {
-          height: 15%;
+        .card-media-overlay {
+          height: 50px;
         }
 
         img:first-child {
@@ -95,7 +95,7 @@ section {
         }
       }
 
-      .card-img-overlay {
+      .card-media-overlay {
         position: absolute;
         left: 0;
         bottom: 30%;
