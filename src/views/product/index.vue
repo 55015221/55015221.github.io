@@ -181,5 +181,44 @@ section {
       }
     }
   }
+
+  @media (max-width: 1400px) {
+    .wrapper {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .wrapper {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .wrapper {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .wrapper {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .wrapper {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
 }
 </style>
