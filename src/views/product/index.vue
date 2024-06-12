@@ -4,7 +4,7 @@
       <ul class="wrapper">
         <li class="item" v-for="(item, index) in dataList" :key="item.id">
           <div class="card">
-            <div class="card-img-top">
+            <div class="card-media-top">
               <a class="media" href="">
                 <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
                 <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
@@ -105,9 +105,8 @@ section {
         transition: height ease-in-out 0.35s;
       }
 
-      .card-img-top {
+      .card-media-top {
         overflow: hidden;
-        padding: 10px;
       }
 
       .media {
