@@ -4,14 +4,13 @@
       <ul class="wrapper">
         <li class="item" v-for="(item, index) in dataList" :key="item.id">
           <article class="card">
+            <span class="badge bg-info badge-shadow">New</span>
+            <div class="card-actions d-flex align-items-center"></div>
             <div class="card-media-top">
               <a class="media" href="">
                 <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
                 <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
               </a>
-            </div>
-            <div class="card-media-overlay">
-              <div style="padding: 1rem">{{ item.description }}</div>
             </div>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
@@ -19,6 +18,9 @@
                 <a href="">{{ item.title }}</a>
               </h3>
               {{ item.description }}
+            </div>
+            <div class="card-body card-body-hidden d-none">
+              <div style="padding: 1rem">{{ item.description }}</div>
             </div>
           </article>
         </li>
@@ -65,8 +67,9 @@ onMounted(async () => {
   &:hover {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
 
-    .card-media-overlay {
-      height: 50px;
+    .card-body-hidden {
+      opacity: 1;
+      height: 20% !important;
     }
 
     img:first-child {
@@ -79,13 +82,14 @@ onMounted(async () => {
     }
   }
 
-  .card-media-overlay {
+  .card-body-hidden {
     position: absolute;
     left: 0;
     bottom: 30%;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     height: 0;
+    opacity: 0;
     transition: height ease-in-out 0.35s;
   }
 
