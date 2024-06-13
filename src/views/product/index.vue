@@ -1,30 +1,56 @@
 <template>
   <section>
     <Container>
-      <ul class="wrapper">
-        <li class="item" v-for="(item, index) in dataList" :key="item.id">
-          <article class="card">
-            <span class="badge bg-info badge-shadow">New</span>
-            <div class="card-actions d-flex align-items-center"></div>
-            <div class="card-media-top">
-              <a class="media" href="">
-                <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />
-                <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />
-              </a>
+      <section>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 g-2 g-lg-3">
+          <div class="col" v-for="(item, index) in dataList" :key="item.id">
+            <div class="card border-0 shadow-sm">
+              <div class="card-img-top">
+                <img :src="`/img/product/${imageList[index % 4]}`" alt="..." />
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">{{ item.title }}</h6>
+                <h7 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h7>
+                <p class="card-text">{{ item.description }}</p>
+                <a href="#" class="card-link">Go somewhere</a>
+              </div>
+              <div class="card-img-overlay">
+                <h6 class="card-title">{{ item.title }}</h6>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                </p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+              </div>
             </div>
-            <div class="card-body">
-              <div class="subtitle">{{ item.subtitle }}</div>
-              <h3 class="title">
-                <a href="">{{ item.title }}</a>
-              </h3>
-              {{ item.description }}
-            </div>
-            <div class="card-body card-body-hidden d-none">
-              <div style="padding: 1rem">{{ item.description }}</div>
-            </div>
-          </article>
-        </li>
-      </ul>
+          </div>
+          <div class="col">2</div>
+          <div class="col">3</div>
+        </div>
+      </section>
+      <!--      <ul class="wrapper">-->
+      <!--        <li class="item" v-for="(item, index) in dataList" :key="item.id">-->
+      <!--          <article class="card">-->
+      <!--            <span class="badge bg-info badge-shadow">New</span>-->
+      <!--            <div class="card-actions d-flex align-items-center"></div>-->
+      <!--            <div class="card-media-top">-->
+      <!--              <a class="media" href="">-->
+      <!--                <img :src="`/img/product/${imageList[index % 4]}`" alt="index" />-->
+      <!--                <img :src="`/img/product/${imageList[index % 3]}`" alt="index" />-->
+      <!--              </a>-->
+      <!--            </div>-->
+      <!--            <div class="card-body">-->
+      <!--              <div class="subtitle">{{ item.subtitle }}</div>-->
+      <!--              <h3 class="title">-->
+      <!--                <a href="">{{ item.title }}</a>-->
+      <!--              </h3>-->
+      <!--              {{ item.description }}-->
+      <!--            </div>-->
+      <!--            <div class="card-body card-body-hidden d-none">-->
+      <!--              <div style="padding: 1rem">{{ item.description }}</div>-->
+      <!--            </div>-->
+      <!--          </article>-->
+      <!--        </li>-->
+      <!--      </ul>-->
     </Container>
   </section>
 </template>
@@ -55,7 +81,18 @@ onMounted(async () => {
 });
 </script>
 <style scoped lang="scss">
-.card {
+.card-img-top {
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100px%22%20height%3D%22100px%22%20viewBox%3D%220%200%20100%20100%22%20preserveAspectRatio%3D%22xMidYMid%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M24.3%2C30C11.4%2C30%2C5%2C43.3%2C5%2C50s6.4%2C20%2C19.3%2C20c19.3%2C0%2C32.1-40%2C51.4-40%20C88.6%2C30%2C95%2C43.3%2C95%2C50s-6.4%2C20-19.3%2C20C56.4%2C70%2C43.6%2C30%2C24.3%2C30z%22%20stroke%3D%22%2356cfe1%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%22205.271142578125%2051.317785644531256%22%3E%3Canimate%20attributeName%3D%22stroke-dashoffset%22%20calcMode%3D%22linear%22%20values%3D%220%3B256.58892822265625%22%20keyTimes%3D%220%3B1%22%20dur%3D%221%22%20begin%3D%220s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Fpath%3E%3C%2Fsvg%3E")
+    center no-repeat;
+  background-size: 20% 20%;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.card1 {
   position: relative;
   display: block;
   height: 100%;
