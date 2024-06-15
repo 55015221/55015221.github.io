@@ -3,7 +3,6 @@ import router from "@/router";
 import ArcoVue from "@arco-design/web-vue";
 import errorHandler from "@/utils/error.ts";
 import App from "./App.vue";
-import "bootstrap";
 import "@/style.css";
 import "@arco-design/web-vue/dist/arco.css";
 

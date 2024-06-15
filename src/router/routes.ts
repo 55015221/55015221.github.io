@@ -29,6 +29,12 @@ const staticRoutes: Array<RouteRecordRaw> = [
         meta: { title: "关于" },
       },
       {
+        path: "tailwind",
+        name: "tailwind",
+        component: () => import("@/views/tailwind/index.vue"),
+        meta: { title: "Tailwind" },
+      },
+      {
         path: "/:all(.*)*", // 404路由
         name: "notFound",
         component: () => import("@/views/error/index.vue"),
