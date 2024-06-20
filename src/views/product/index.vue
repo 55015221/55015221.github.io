@@ -4,26 +4,24 @@
       <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
         <div class="col" v-for="(item, index) in dataList" :key="item.id">
           <div class="card">
-            <div class="card-labels">
+            <div class="card-label">
               <span class="badge text-bg-primary">New</span>
               <span class="badge text-bg-success">Hot</span>
             </div>
-            <div class="card-actions">
-              <button><i class="bi bi-heart-fill"></i></button>
-              <button><i class="bi bi-heart-fill"></i></button>
+            <div class="card-action">
+              <button><i class="bi bi-heart"></i></button>
+              <button><i class="bi bi-brightness-high"></i></button>
             </div>
             <div class="card-image">
               <a class="card-media-top" href="">
-                <img :src="`/img/product/${imageList[index % 5]}`" alt="..." />
-                <img :src="`/img/product/${imageList[(index % 2) + 1]}`" alt="..." />
+                <img :src="`/img/png/0${index}.png`" alt="..." />
+                <img :src="`/img/png/0${index + 1}.png`" alt="..." />
               </a>
             </div>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
               <h3 class="title">
-                <a href="">
-                  <span class="animate-target">{{ item.title }}{{ item.title }}</span>
-                </a>
+                <a href=""> {{ item.title }}{{ item.title }} </a>
               </h3>
               <p>{{ item.description }}{{ item.description }}</p>
             </div>
@@ -63,7 +61,7 @@ onMounted(async () => {
   fetchData().then((response) => {
     Object.assign(
       dataList,
-      response.data.data.filter((x, i) => i < 4)
+      response.data.data.filter((_, i: number) => i < 10)
     );
   });
 });
@@ -80,7 +78,6 @@ onMounted(async () => {
 }
 
 section {
-  font-size: 12px;
   background: #f4f3f3;
   padding: 30px 0;
 
@@ -94,15 +91,24 @@ section {
     overflow: hidden;
 
     &:hover {
-      .animate-target {
+      .title {
         &:after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
+          transform: scaleX(1) !important;
+          transform-origin: bottom left !important;
         }
+      }
+
+      img:first-child {
+        opacity: 0 !important;
+      }
+
+      img:last-child {
+        opacity: 1 !important;
+        transform: scale(1.25);
       }
     }
 
-    .card-actions {
+    .card-action {
       position: absolute;
       top: 6px;
       right: 6px;
@@ -127,16 +133,18 @@ section {
         border-radius: 0.5rem;
 
         .bi {
-          font-size: 1.5rem;
-          color: #ccc;
-
-          &:hover {
-          }
+          font-size: 1rem;
+          color: #000;
+        }
+        &:hover {
+          background-color: #e0e5eb;
+          border-color: #e0e5eb;
+          color: #181d25;
         }
       }
     }
 
-    .card-labels {
+    .card-label {
       position: absolute;
       top: 6px;
       left: 6px;
@@ -188,55 +196,36 @@ section {
         object-fit: cover;
         transition: all ease-in-out 0.3s;
       }
-
-      &:hover {
-        .title {
-          &:after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-          }
-        }
-
-        img:first-child {
-          opacity: 0 !important;
-        }
-
-        img:last-child {
-          opacity: 1 !important;
-          transform: scale(1.25);
-        }
-      }
     }
 
     .card-body {
       padding: 10px;
 
       .title {
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: bold;
         position: relative;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.2rem;
         @include line-ellipsis;
+
+        &:after {
+          position: absolute;
+          content: "";
+          transition: transform 0.3s ease-out;
+          background-color: currentcolor;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          top: auto;
+          transform: scaleX(0);
+          transform-origin: bottom right;
+          width: calc(100% - 1.425em - 1.125rem * 2);
+        }
 
         > a {
           color: #000;
           text-decoration: none;
-        }
-
-        .animate-target {
-          position: relative;
-
-          &:after {
-            background-color: currentcolor;
-            bottom: 0;
-            content: "";
-            height: 1px;
-            left: 0;
-            position: absolute;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-            width: 100%;
-          }
         }
       }
 
@@ -245,6 +234,7 @@ section {
       }
 
       p {
+        font-size: 0.8rem;
         @include line-ellipsis(2);
       }
     }
