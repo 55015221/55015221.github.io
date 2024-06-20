@@ -3,33 +3,29 @@
     <Container>
       <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
         <div class="col" v-for="(item, index) in dataList" :key="item.id">
-          <div class="card border-0">
-            <div class="card-badge">
+          <div class="card">
+            <div class="card-labels">
               <span class="badge text-bg-primary">New</span>
               <span class="badge text-bg-success">Hot</span>
             </div>
-            <div class="card-actions">222</div>
-            <div class="card-media-top">
-              <a class="image" href="">
-                <!--                <img :src="`/img/product/${imageList[index % 5]}`" alt="index" />-->
-                <!--                <img :src="`/img/product/${imageList[(index % 2) + 1]}`" alt="index" />-->
-                <img :src="item.thumbnail" alt="" />
-                <img :src="item.thumbnail" alt="" />
+            <div class="card-actions">
+              <button><i class="bi bi-heart-fill"></i></button>
+              <button><i class="bi bi-heart-fill"></i></button>
+            </div>
+            <div class="card-image">
+              <a class="card-media-top" href="">
+                <img :src="`/img/product/${imageList[index % 5]}`" alt="..." />
+                <img :src="`/img/product/${imageList[(index % 2) + 1]}`" alt="..." />
               </a>
             </div>
             <div class="card-body">
               <div class="subtitle">{{ item.subtitle }}</div>
               <h3 class="title">
-                <a href="">{{ item.title }}</a>
+                <a href="">
+                  <span class="animate-target">{{ item.title }}{{ item.title }}</span>
+                </a>
               </h3>
-              {{ item.description }}
-            </div>
-            <div class="card-body card-body-hidden">
-              <div class="subtitle">{{ item.subtitle }}</div>
-              <h3 class="title">
-                <a href="">{{ item.title }}</a>
-              </h3>
-              {{ item.description }}
+              <p>{{ item.description }}{{ item.description }}</p>
             </div>
           </div>
         </div>
@@ -67,12 +63,22 @@ onMounted(async () => {
   fetchData().then((response) => {
     Object.assign(
       dataList,
-      response.data.data.filter((x, i) => i < 1)
+      response.data.data.filter((x, i) => i < 4)
     );
   });
 });
 </script>
 <style scoped lang="scss">
+@mixin line-ellipsis($line: 1) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  // 使用传入的行数作为 -webkit-line-clamp 的值
+  -webkit-line-clamp: $line;
+}
+
 section {
   font-size: 12px;
   background: #f4f3f3;
@@ -83,19 +89,57 @@ section {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
     background-color: #fff;
     border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
     overflow: hidden;
+
+    &:hover {
+      .animate-target {
+        &:after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+    }
 
     .card-actions {
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: 6px;
+      right: 6px;
       z-index: 3;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        flex-shrink: 0;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        padding: 0;
+        width: 2.5rem;
+        background-color: #eef1f6;
+        border: 1px solid #eef1f6;
+        border-radius: 0.5rem;
+
+        .bi {
+          font-size: 1.5rem;
+          color: #ccc;
+
+          &:hover {
+          }
+        }
+      }
     }
 
-    .card-badge {
+    .card-labels {
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 6px;
+      left: 6px;
       font-size: 1rem;
       display: flex;
       flex-direction: row;
@@ -108,33 +152,14 @@ section {
       }
     }
 
-    &:hover {
-      img:first-child {
-        opacity: 0 !important;
-      }
-
-      img:last-child {
-        opacity: 1 !important;
-        transform: scale(1.25);
-      }
-    }
-
-    .card-body-hidden {
-      //display: none;
-      position: absolute;
-      top: 40%;
-      left: 0;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .card-media-top {
+    .card-image {
       position: relative;
       overflow: hidden;
+      transition: all ease-in-out 0.5s;
 
-      .image {
+      .card-media-top {
         position: relative;
         overflow: hidden;
-        transition: all ease-in-out 0.5s;
 
         &:after {
           padding-top: 100%;
@@ -144,64 +169,83 @@ section {
             center no-repeat;
           background-size: 20% 20%;
         }
+      }
+
+      img:first-child {
+        opacity: 1;
+      }
+
+      img:last-child {
+        opacity: 0;
+      }
+
+      img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+        object-fit: cover;
+        transition: all ease-in-out 0.3s;
+      }
+
+      &:hover {
+        .title {
+          &:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+          }
+        }
 
         img:first-child {
-          opacity: 1;
+          opacity: 0 !important;
         }
 
         img:last-child {
-          opacity: 0;
-        }
-
-        img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: auto;
-          vertical-align: middle;
-          object-fit: cover;
-          transition: all ease-in-out 0.3s;
+          opacity: 1 !important;
+          transform: scale(1.25);
         }
       }
     }
 
     .card-body {
-      padding: 15px;
+      padding: 10px;
 
       .title {
         font-size: 1rem;
         font-weight: bold;
-        margin: 5px 0;
+        position: relative;
+        @include line-ellipsis;
 
         > a {
           color: #000;
           text-decoration: none;
+        }
+
+        .animate-target {
+          position: relative;
+
+          &:after {
+            background-color: currentcolor;
+            bottom: 0;
+            content: "";
+            height: 1px;
+            left: 0;
+            position: absolute;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+            width: 100%;
+          }
         }
       }
 
       .subtitle {
         font-size: 0.8rem;
       }
-    }
 
-    .link-overlay {
-      text-decoration: none;
-      color: rgb(4, 4, 4);
-      background-color: transparent;
-      z-index: 1;
-      cursor: pointer;
-      border: none;
-      text-underline-offset: 0.3rem;
-      font-size: 1.5rem;
-
-      &:empty {
-        display: block;
-        max-width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
+      p {
+        @include line-ellipsis(2);
       }
     }
   }
