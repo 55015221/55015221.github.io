@@ -21,6 +21,62 @@
         <div style="height: 25rem; background-size: 100% 100%; background-image: url(&quot;/img/tos_3.jpg&quot;)"></div>
       </swiper-slide>
     </swiper>
+
+    <section>
+      <!--      {-->
+      <!--      &quot;slidesPerView&quot;: 2,-->
+      <!--      &quot;spaceBetween&quot;: 24,-->
+      <!--      &quot;loop&quot;: true,-->
+      <!--      &quot;navigation&quot;: {-->
+      <!--      &quot;prevEl&quot;: &quot;.popular-prev&quot;,-->
+      <!--      &quot;nextEl&quot;: &quot;.popular-next&quot;-->
+      <!--      },-->
+      <!--      &quot;breakpoints&quot;: {-->
+      <!--      &quot;768&quot;: {-->
+      <!--      &quot;slidesPerView&quot;: 3-->
+      <!--      },-->
+      <!--      &quot;992&quot;: {-->
+      <!--      &quot;slidesPerView&quot;: 4-->
+      <!--      }-->
+      <!--      }-->
+      <!--      }-->
+
+      <Container>
+        <swiper
+          :slides-per-view="5"
+          :space-between="24"
+          :loop="true"
+          :navigation="true"
+          :modules="[Navigation, Pagination, EffectFade, Autoplay, Controller, Scrollbar]"
+        >
+          <swiper-slide v-for="(item, index) in dataList" :key="item.id">
+            <div class="card">
+              <div class="card-label">
+                <span class="badge text-bg-danger">热门</span>
+                <span class="badge text-bg-success">流行</span>
+              </div>
+              <div class="card-action">
+                <button><i class="bi bi-heart"></i></button>
+                <button><i class="bi bi-brightness-high"></i></button>
+              </div>
+              <div class="card-image">
+                <a class="card-media-top" href="">
+                  <img :src="`/img/png/0${index}.png`" alt="..." />
+                  <img :src="`/img/png/0${index + 1}.png`" alt="..." />
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="subtitle">{{ item.subtitle }}</div>
+                <h3 class="title animate-underline">
+                  <a class="" href=""> {{ item.title }}{{ item.title }} </a>
+                </h3>
+                <p>{{ item.description }}{{ item.description }}</p>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </Container>
+    </section>
     <section>
       <Container>
         <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
