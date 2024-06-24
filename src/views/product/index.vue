@@ -23,7 +23,7 @@
     </swiper>
     <section>
       <Container>
-        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
+        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, index) in dataList" :key="item.id">
             <div class="card">
               <div class="card-label">
@@ -36,8 +36,8 @@
               </div>
               <div class="card-image">
                 <a class="card-media-top" href="">
-                  <img :src="`/img/png/0${index}.png`" alt="..." />
-                  <img :src="`/img/png/0${index + 1}.png`" alt="..." />
+                  <img :src="`/img/huawei/800_800_${index % 20}.png`" alt="..." />
+                  <img :src="`/img/huawei/800_800_${55 - (index % 20)}.png`" alt="..." />
                 </a>
               </div>
               <div class="card-body">
@@ -224,17 +224,24 @@ section {
 
       .card-media-top {
         width: 100%;
-        position: relative;
         overflow: hidden;
 
         img {
           position: absolute; /* 相对于包含padding的a元素定位 */
-          top: 0;
-          left: 0;
+          inset: 0;
           width: 100%; /* 宽度100%以填充包含padding的a元素 */
           height: auto; /* 保持图片的原始纵横比 */
           object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
           background: #ffffff;
+          transition: opacity 0.2s ease-in-out; /* 可选：添加透明度过渡效果 */
+
+          &:nth-child(odd) {
+            opacity: 1;
+          }
+
+          &:nth-child(even) {
+            opacity: 0;
+          }
         }
 
         &:before {
@@ -246,24 +253,6 @@ section {
           background-repeat: no-repeat;
           background-size: 20% 20%;
         }
-      }
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%; /* 宽度100%以填充包含padding的a元素 */
-        height: auto; /* 保持图片的原始纵横比 */
-        object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
-        transition: opacity 0.2s ease-in-out; /* 可选：添加透明度过渡效果 */
-      }
-
-      img:nth-child(odd) {
-        opacity: 1;
-      }
-
-      img:nth-child(even) {
-        opacity: 0;
       }
 
       &:hover {
