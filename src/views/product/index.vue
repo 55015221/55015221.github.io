@@ -23,6 +23,29 @@
     </swiper>
     <section>
       <Container>
+        <swiper
+          :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
+          :slides-per-view="4"
+          :space-between="10"
+          navigation
+          :pagination="{ clickable: true }"
+          loop
+          @swiper="onSwiper"
+          @slideChange="onSlideChange"
+        >
+          <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 28rem">
+            <Card :modelValue="item">
+              <template #default>
+                <img :src="`/img/huawei/800_800_${index % 20}.png`" alt="..." />
+                <img :src="`/img/huawei/800_800_${55 - (index % 20)}.png`" alt="..." />
+              </template>
+            </Card>
+          </swiper-slide>
+        </swiper>
+      </Container>
+    </section>
+    <section>
+      <Container>
         <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, index) in dataList" :key="item.id">
             <Card :modelValue="item">

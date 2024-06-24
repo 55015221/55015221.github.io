@@ -169,7 +169,7 @@ console.log("Props", props.modelValue);
       width: 100%;
       overflow: hidden;
 
-      img {
+      :deep(img) {
         position: absolute; /* 相对于包含padding的a元素定位 */
         inset: 0;
         width: 100%; /* 宽度100%以填充包含padding的a元素 */
@@ -199,11 +199,11 @@ console.log("Props", props.modelValue);
     }
 
     &:hover {
-      img:nth-child(even) {
+      :deep(img):nth-child(even) {
         opacity: 1 !important;
       }
 
-      img:nth-child(odd) {
+      :deep(img):nth-child(odd) {
         opacity: 0 !important;
       }
     }
