@@ -27,13 +27,13 @@
           :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
           :slides-per-view="4"
           :space-between="10"
-          navigation
+          :navigation="{}"
           :pagination="{ clickable: true }"
           loop
           @swiper="onSwiper"
           @slideChange="onSlideChange"
         >
-          <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 28rem">
+          <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 40rem">
             <Card :modelValue="item" />
           </swiper-slide>
         </swiper>
