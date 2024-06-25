@@ -25,6 +25,15 @@ export default [
             },
             "contentType|0-3": 0,
             "serviceUnreadCount|0-10": 0,
+            "images|3": [
+              {
+                id: "@id",
+                title: "@title",
+                url() {
+                  return `https://static.cms.me/static/huawei/800_800_${Mock.Random.integer(0, 55)}.png`;
+                },
+              },
+            ],
           },
         ],
       });
