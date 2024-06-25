@@ -10,7 +10,7 @@
     </div>
     <div class="card-image">
       <a class="card-media-top">
-        <slot />
+        <img v-for="image in modelValue.images" :src="image.url" :alt="image.title" />
       </a>
     </div>
     <div class="card-body">
@@ -28,7 +28,13 @@ defineOptions({
   name: "Card",
 });
 
-interface CardProps {
+interface ImageModel {
+  id: number;
+  title: string;
+  url: string;
+}
+
+interface CardModel {
   id: number;
   title: string;
   subtitle: string;
@@ -37,11 +43,12 @@ interface CardProps {
   thumbnail: string;
   icon: string;
   created_at: string;
+  images: Array<ImageModel>;
 }
 
 const props = defineProps({
   modelValue: {
-    type: Object,
+    type: Object as () => CardModel,
     default: () => {},
   },
 });

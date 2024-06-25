@@ -34,12 +34,7 @@
           @slideChange="onSlideChange"
         >
           <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 28rem">
-            <Card :modelValue="item">
-              <template #default>
-                <img :src="`/img/huawei/800_800_${index % 20}.png`" alt="..." />
-                <img :src="`/img/huawei/800_800_${55 - (index % 20)}.png`" alt="..." />
-              </template>
-            </Card>
+            <Card :modelValue="item" />
           </swiper-slide>
         </swiper>
       </Container>
