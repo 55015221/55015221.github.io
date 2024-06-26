@@ -114,8 +114,8 @@ console.log("Props", props.modelValue);
 
   .card-action {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 0.5rem;
+    right: 0.5rem;
     z-index: 3;
     background: none;
     display: flex;
@@ -152,8 +152,8 @@ console.log("Props", props.modelValue);
 
   .card-label {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
