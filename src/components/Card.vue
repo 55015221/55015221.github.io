@@ -10,20 +10,22 @@
     </div>
     <div class="card-image">
       <a class="card-media-top">
-        <img v-for="image in modelValue.images" :src="image.url" :alt="image.title" />
+        <img v-for="image in images" :src="image.url" :alt="image.title" />
       </a>
     </div>
     <div class="card-body">
-      <div class="subtitle">{{ modelValue.subtitle }}</div>
+      <div class="subtitle">{{ subtitle }}</div>
       <h3 class="title animate-underline">
-        <a class="" href=""> {{ modelValue.title }}{{ modelValue.title }} </a>
+        <a class="" href=""> {{ title }}{{ title }} </a>
       </h3>
-      <p>{{ modelValue.description }}{{ modelValue.description }}</p>
+      <p>{{ description }}{{ description }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { toRefs } from "vue";
+
 defineOptions({
   name: "Card",
 });
@@ -54,6 +56,8 @@ const props = defineProps({
 });
 
 console.log("Props", props.modelValue);
+
+const { title, subtitle, description, images } = toRefs(props.modelValue);
 </script>
 
 <style scoped lang="scss">
