@@ -1,6 +1,7 @@
 <template>
   <div>
     <swiper
+      v-if="false"
       :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
       :slides-per-view="1"
       :space-between="20"
@@ -22,7 +23,7 @@
       </swiper-slide>
     </swiper>
 
-    <section>
+    <section v-if="false">
       <Container>
         <swiper
           :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
@@ -42,7 +43,7 @@
     </section>
     <section>
       <Container>
-        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
+        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, index) in dataList" :key="item.id">
             <Card :modelValue="item">
               <template #default>
@@ -58,7 +59,7 @@
 </template>
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination, EffectFade, Controller, Scrollbar, A11y, Autoplay } from "swiper/modules";
+import { Navigation, Pagination, EffectFade, Controller, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -78,6 +79,7 @@ interface CardType {
   thumbnail: string;
   icon: string;
   created_at: string;
+  image: Array<any>;
 }
 
 const dataList = reactive<Array<CardType>>([]);
@@ -88,14 +90,6 @@ const onSwiper = (swiper) => {
 const onSlideChange = () => {
   console.log("slide change");
 };
-
-const imageList = [
-  "03-Chairs-hover.webp",
-  "01-CabinetsShelves-Color-02.webp",
-  "01-Chairs-Color-02.webp",
-  "01-Printers-hover.webp",
-  "08-Printers-hover.webp",
-];
 
 onMounted(async () => {
   fetchData().then((response) => {
