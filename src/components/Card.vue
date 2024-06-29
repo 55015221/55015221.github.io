@@ -96,14 +96,16 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
 
 .card {
   position: relative;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
-  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
   border-radius: 0.5rem;
   cursor: pointer;
   border: none;
   overflow: hidden;
+  color: #313132;
 
   &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+
     .card-action {
       opacity: 1;
     }
@@ -181,12 +183,13 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
       overflow: hidden;
 
       :deep(img) {
+        padding: 30px;
         position: absolute; /* 相对于包含padding的a元素定位 */
         inset: 0;
         width: 100%; /* 宽度100%以填充包含padding的a元素 */
         height: auto; /* 保持图片的原始纵横比 */
         object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
-        background: #ffffff;
+        background-color: rgba(0, 0, 0, 0.02);
         transition: opacity 0.2s ease-in-out; /* 可选：添加透明度过渡效果 */
 
         &:nth-child(odd) {
@@ -231,17 +234,19 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
       @include line-ellipsis;
 
       > a {
-        color: #000;
+        color: inherit;
         text-decoration: none;
       }
     }
 
     .subtitle {
+      opacity: 0.6;
       font-size: 0.8rem;
     }
 
     p {
       font-size: 0.8rem;
+      opacity: 0.8;
       @include line-ellipsis(2);
     }
   }
