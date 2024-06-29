@@ -43,14 +43,9 @@
     </section>
     <section>
       <Container>
-        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
+        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, index) in dataList" :key="item.id">
-            <Card :modelValue="item">
-              <template #default>
-                <img :src="`/img/huawei/800_800_${index % 20}.png`" alt="..." />
-                <img :src="`/img/huawei/800_800_${55 - (index % 20)}.png`" alt="..." />
-              </template>
-            </Card>
+            <Card :modelValue="item"></Card>
           </div>
         </div>
       </Container>

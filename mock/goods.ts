@@ -30,6 +30,7 @@ export default [
                 id: "@id",
                 title: "@title",
                 url() {
+                  return `https://static.cms.me/static/house/${Mock.Random.integer(0, 55)}.jpg`;
                   return `https://static.cms.me/static/huawei/800_800_${Mock.Random.integer(0, 55)}.png`;
                 },
               },

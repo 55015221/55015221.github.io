@@ -110,6 +110,14 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
       opacity: 1;
     }
 
+    :deep(img):not(:last-child) {
+      opacity: 0 !important;
+    }
+
+    :deep(img):last-child {
+      opacity: 1 !important;
+    }
+
     .title {
       &:after {
         transform: scaleX(1) !important;
@@ -183,21 +191,20 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
       overflow: hidden;
 
       :deep(img) {
-        padding: 30px;
         position: absolute; /* 相对于包含padding的a元素定位 */
         inset: 0;
         width: 100%; /* 宽度100%以填充包含padding的a元素 */
-        height: auto; /* 保持图片的原始纵横比 */
+        height: 100%; /* 保持图片的原始纵横比 */
         object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
-        background-color: rgba(0, 0, 0, 0.02);
-        transition: opacity 0.2s ease-in-out; /* 可选：添加透明度过渡效果 */
+        background-color: #ffffff;
+        transition: opacity 0.35s ease-in-out; /* 可选：添加透明度过渡效果 */
 
-        &:nth-child(odd) {
-          opacity: 1;
+        &:not(:first-child) {
+          opacity: 0;
         }
 
-        &:nth-child(even) {
-          opacity: 0;
+        &:first-child {
+          opacity: 1;
         }
       }
 
@@ -209,16 +216,6 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 20% 20%;
-      }
-    }
-
-    &:hover {
-      :deep(img):nth-child(even) {
-        opacity: 1 !important;
-      }
-
-      :deep(img):nth-child(odd) {
-        opacity: 0 !important;
       }
     }
   }
