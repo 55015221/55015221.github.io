@@ -1,14 +1,14 @@
 <template>
   <div class="card">
-    <div class="card-label">
-      <span class="badge text-bg-danger">热门</span>
-      <span class="badge text-bg-success">流行</span>
-    </div>
-    <div class="card-action">
-      <button><i class="bi bi-heart"></i></button>
-      <button><i class="bi bi-brightness-high"></i></button>
-    </div>
     <div class="card-image">
+      <div class="card-label">
+        <span class="badge text-bg-danger">热门</span>
+        <span class="badge text-bg-success">流行</span>
+      </div>
+      <div class="card-action">
+        <button><i class="bi bi-heart"></i></button>
+        <button><i class="bi bi-brightness-high"></i></button>
+      </div>
       <a class="card-media-top">
         <img v-for="image in images" :src="image.url" :alt="image.title" />
       </a>
@@ -95,9 +95,11 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.02);
-  border-radius: 0.5rem;
   cursor: pointer;
   border: none;
   overflow: hidden;
@@ -198,6 +200,7 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
         object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
         background-color: #ffffff;
         transition: opacity 0.35s ease-in-out; /* 可选：添加透明度过渡效果 */
+        border-radius: 0.5rem;
 
         &:not(:first-child) {
           opacity: 0;
