@@ -96,7 +96,7 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
 
 .card {
   position: relative;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.02);
   border-radius: 0.5rem;
   cursor: pointer;
   border: none;
@@ -104,7 +104,7 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
   color: #313132;
 
   &:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 
     .card-action {
       opacity: 1;
