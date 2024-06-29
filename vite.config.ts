@@ -20,6 +20,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     resolve: { alias },
     server: {
       open: true,
+      host: "0.0.0.0",
     },
     plugins: [
       vue(),
