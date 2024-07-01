@@ -231,9 +231,9 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
       font-weight: bold;
       padding-bottom: 0.2rem;
       margin-bottom: 0.2rem;
-      @include line-ellipsis;
 
       > a {
+        @include line-ellipsis;
         color: inherit;
         text-decoration: none;
       }
