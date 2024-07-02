@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from "vue";
+import { toRefs, computed } from "vue";
 
 defineOptions({
   name: "Card",
@@ -57,7 +57,10 @@ const props = defineProps({
 
 console.log("Props", props.modelValue);
 
-const { title, subtitle, description, images } = toRefs(props.modelValue);
+const { title, subtitle, description } = toRefs(props.modelValue);
+const images = computed(() => {
+  return props.modelValue.images.filter((_, i: number) => i < 1);
+});
 </script>
 
 <style scoped lang="scss">
@@ -189,10 +192,12 @@ const { title, subtitle, description, images } = toRefs(props.modelValue);
     width: 100%;
 
     .card-media-top {
-      width: 100%;
       overflow: hidden;
+      width: 100%;
+      height: 100%;
 
       :deep(img) {
+        overflow: hidden;
         position: absolute; /* 相对于包含padding的a元素定位 */
         inset: 0;
         width: 100%; /* 宽度100%以填充包含padding的a元素 */
