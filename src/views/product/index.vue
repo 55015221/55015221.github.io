@@ -90,7 +90,7 @@ onMounted(async () => {
   fetchData().then((response) => {
     Object.assign(
       dataList,
-      response.data.data.filter((_, i: number) => i < 10)
+      response.data.data.filter((_, i: number) => i < 1)
     );
   });
 });

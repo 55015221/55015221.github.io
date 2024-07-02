@@ -1,16 +1,20 @@
 <template>
-  <Container>
-    <div class="flex">
-      <div class="logo">
-        <img src="/favicon/android-chrome-192x192.png" :height="60" />
+  <section>
+    <Container>
+      <div>
+        <div class="flex">
+          <div class="logo">
+            <img src="/favicon/android-chrome-192x192.png" :height="60" />
+          </div>
+          <a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
+            <a-menu-item v-for="row in menuList" :key="row.link">
+              {{ row.label }}
+            </a-menu-item>
+          </a-menu>
+        </div>
       </div>
-      <a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
-        <a-menu-item v-for="row in menuList" :key="row.link">
-          {{ row.label }}
-        </a-menu-item>
-      </a-menu>
-    </div>
-  </Container>
+    </Container>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -38,9 +42,21 @@ const ClickHandler = (key: string) => {
 };
 </script>
 <style lang="scss" scoped>
+section {
+  background-color: #f4f7fc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.arco-menu-light .arco-menu-item,
+.arco-menu-light .arco-menu-group-title,
+.arco-menu-light .arco-menu-pop-header,
+.arco-menu-light .arco-menu-inline-header {
+  background: none;
+}
+
 .flex {
   display: flex;
-  background: #fff;
 }
 
 .arco-menu-light {
