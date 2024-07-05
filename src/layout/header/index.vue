@@ -45,7 +45,6 @@ const ClickHandler = (key: string) => {
 section {
   background-color: #f4f7fc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
 }
 
 .arco-menu-light .arco-menu-item,
