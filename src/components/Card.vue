@@ -68,6 +68,7 @@
   cursor: pointer;
   border: none;
   overflow: hidden;
+  border-radius: 0;
 
   a {
     color: #313132;

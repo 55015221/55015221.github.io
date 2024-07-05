@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: rgba(200, 200, 200, 0.2)">
     <swiper
       v-if="false"
       :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
@@ -43,7 +43,7 @@
     </section>
     <section>
       <Container>
-        <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
+        <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, index) in dataList" :key="item.id">
             <Card :modelValue="item"></Card>
           </div>
