@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgba(200, 200, 200, 0.2)">
+  <div>
     <swiper
       v-if="false"
       :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
@@ -44,8 +44,8 @@
     <section>
       <Container>
         <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
-          <div class="col" v-for="(item, index) in dataList" :key="item.id">
-            <Card :modelValue="item"></Card>
+          <div class="col" v-for="(item, _) in dataList" :key="item.id">
+            <Card :item="item"></Card>
           </div>
         </div>
       </Container>
@@ -90,7 +90,7 @@ onMounted(async () => {
   fetchData().then((response) => {
     Object.assign(
       dataList,
-      response.data.data.filter((_, i: number) => i < 20)
+      response.data.data.filter((_, i: number) => i < 8)
     );
   });
 });
