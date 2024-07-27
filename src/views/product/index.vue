@@ -36,7 +36,7 @@
           @slideChange="onSlideChange"
         >
           <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 40rem">
-            <Card :modelValue="item" />
+            <Card :data="item" />
           </swiper-slide>
         </swiper>
       </Container>
@@ -45,7 +45,7 @@
       <Container>
         <div class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
           <div class="col" v-for="(item, _) in dataList" :key="item.id">
-            <Card :item="item"></Card>
+            <Card :data="item"></Card>
           </div>
         </div>
       </Container>
@@ -74,7 +74,7 @@ interface CardType {
   thumbnail: string;
   icon: string;
   created_at: string;
-  image: Array<any>;
+  images: Array<any>;
 }
 
 const dataList = reactive<Array<CardType>>([]);

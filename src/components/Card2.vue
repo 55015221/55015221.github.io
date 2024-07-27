@@ -249,16 +249,16 @@ interface CardModel {
 }
 
 const props = defineProps({
-  data: {
+  modelValue: {
     type: Object as () => CardModel,
     default: () => {},
   },
 });
 
-console.log("Props", props.data);
+console.log("Props", props.modelValue);
 
-const { title, subtitle, description } = toRefs(props.data);
+const { title, subtitle, description } = toRefs(props.modelValue);
 const images = computed(() => {
-  return props.data.images.filter((_, i: number) => i < 1);
+  return props.modelValue.images.filter((_, i: number) => i < 1);
 });
 </script>
