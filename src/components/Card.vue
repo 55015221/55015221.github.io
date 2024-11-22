@@ -126,7 +126,7 @@ const {title, subtitle, images, description} = toRefs(props.data);
       color: #666;
       font-size: 0.9rem;
       overflow: hidden;
-      display: box;
+      display: block;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
