@@ -20,7 +20,7 @@ const staticRoutes: Array<RouteRecordRaw> = [
         path: "product",
         name: "product",
         component: () => import("@/views/product/index.vue"),
-        meta: { title: "关于" },
+        meta: { title: "产品中心" },
       },
       {
         path: "about",

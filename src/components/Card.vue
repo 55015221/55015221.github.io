@@ -1,27 +1,25 @@
 <template>
   <div class="card">
-    <a href="" title="">
-      <div class="card-image">
-        <div class="card-label">
-          <span class="badge text-bg-danger">热门</span>
-          <span class="badge text-bg-success">流行</span>
-        </div>
-        <div class="card-action">
-          <button><i class="bi bi-heart"></i></button>
-          <button><i class="bi bi-brightness-high"></i></button>
-        </div>
-        <div class="card-media-top">
-          <img v-for="image in images" :src="image.url" :alt="image.title" />
-        </div>
+    <div class="card-image p-3">
+      <div class="card-label">
+        <span class="badge text-bg-danger">热门</span>
+        <span class="badge text-bg-success">流行</span>
       </div>
-      <div class="card-body">
-        <div class="subtitle">{{ subtitle }}</div>
-        <h3 class="title animate-underline">
-          <a class="" href=""> {{ title }}{{ title }} </a>
-        </h3>
-        <p>{{ description }}{{ description }}</p>
+      <div class="card-action">
+        <button><i class="bi bi-heart"></i></button>
+        <button><i class="bi bi-brightness-high"></i></button>
       </div>
-    </a>
+      <div class="card-media-top">
+        <img v-for="image in images" :src="image.url" :alt="image.title" />
+      </div>
+    </div>
+    <div class="card-body p-0">
+      <div class="subtitle">{{ subtitle }}</div>
+      <h3 class="title animate-underline">
+        <a class="stretched-link" href=""> {{ title }}{{ title }} </a>
+      </h3>
+      <p>{{ description }}{{ description }}</p>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
@@ -177,7 +175,6 @@
         object-fit: cover; /* 确保图片覆盖整个空间，但可能会被裁剪 */
         background-color: #ffffff;
         transition: opacity 0.35s ease-in-out; /* 可选：添加透明度过渡效果 */
-        border-radius: 10px;
         vertical-align: middle;
         border: 0;
         max-width: 100%;
