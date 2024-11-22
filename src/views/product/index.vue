@@ -1,17 +1,6 @@
 <template>
   <div>
-    <swiper
-      v-if="false"
-      :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
-      :slides-per-view="1"
-      :space-between="20"
-      loop
-      autoplay
-      navigation
-      :pagination="{ clickable: true }"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-    >
+    <swiper v-if="false" :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]" :slides-per-view="1" :space-between="20" loop autoplay navigation :pagination="{clickable: true}" @swiper="onSwiper" @slideChange="onSlideChange">
       <swiper-slide>
         <div style="height: 25rem; background-size: 100% 100%; background-image: url(&quot;/img/tos_1.jpg&quot;)"></div>
       </swiper-slide>
@@ -25,16 +14,7 @@
 
     <section v-if="false">
       <Container>
-        <swiper
-          :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]"
-          :slides-per-view="4"
-          :space-between="10"
-          :navigation="{}"
-          :pagination="{ clickable: true }"
-          loop
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
-        >
+        <swiper :modules="[Navigation, Pagination, EffectFade, A11y, Autoplay, Controller]" :slides-per-view="4" :space-between="10" :navigation="{}" :pagination="{clickable: true}" loop @swiper="onSwiper" @slideChange="onSlideChange">
           <swiper-slide v-for="(item, index) in dataList" :key="item.id" style="height: 40rem">
             <Card :data="item" />
           </swiper-slide>
@@ -53,16 +33,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination, EffectFade, Controller, A11y, Autoplay } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import {Navigation, Pagination, EffectFade, Controller, A11y, Autoplay} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 import Container from "@/components/Container.vue";
-import { onMounted, reactive } from "vue";
-import { fetchData } from "@/api/goods.ts";
+import {onMounted, reactive} from "vue";
+import {fetchData} from "@/api/goods.ts";
 import Card from "@/components/Card.vue";
 
 interface CardType {
@@ -90,7 +70,7 @@ onMounted(async () => {
   fetchData().then((response) => {
     Object.assign(
       dataList,
-      response.data.data.filter((_, i: number) => i < 8)
+      response.data.data.filter((_, i: number) => i < 5)
     );
   });
 });

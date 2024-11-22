@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const cardList = computed(() => {
-  return props.data.filter((_, i) => i < 8);
+  return props.data.filter((_, i) => i < 5);
 });
 </script>
 

@@ -1,6 +1,6 @@
 module.exports = {
 	// 一行最多多少个字符
-	printWidth: 150,
+	printWidth: 600,
 	// 指定每个缩进级别的空格数
 	tabWidth: 2,
 	// 使用制表符而不是空格缩进行 (true：制表符，false：空格)
@@ -16,8 +16,9 @@ module.exports = {
 	// 多行时尽可能打印尾随逗号。（例如，单行数组永远不会出现逗号结尾。） 可选值"<none|es5|all>"，默认none
 	trailingComma: "es5",
 	// 在对象文字中的括号之间打印空格
-	bracketSpacing: true,
+	bracketSpacing: false,
 	// jsx 标签的反尖括号需要换行
+	bracketSameLine: false,
 	jsxBracketSameLine: false,
 	// 在单独的箭头函数参数周围包括括号 always：(x) => x \ avoid：x => x
 	arrowParens: "always",
