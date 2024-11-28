@@ -3,7 +3,7 @@
     <div class="container">
       <section class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
         <div class="col" v-for="(card, index) in cardList">
-          <article class="card border-0 rounded-0 shadow-sm">
+          <article class="card border-0 shadow">
             <div class="card-media">
               <div :id="`carouselExampleIndicators-${index}`" class="carousel slide" v-if="card.images.length > 1">
                 <div class="carousel-indicators">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="carousel-inner">
                   <div :class="`carousel-item ${i === 0 ? 'active' : ''}`" v-for="(image, i) in card.images">
-                    <div class="ratio" style="--bs-aspect-ratio: 75%">
+                    <div class="ratio" style="--bs-aspect-ratio: 100%">
                       <img :src="image.url" class="object-fit-cover rounded" alt="..." />
                     </div>
                   </div>
@@ -33,16 +33,15 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-              <div v-else class="ratio" style="--bs-aspect-ratio: 75%">
+              <div v-else class="ratio" style="--bs-aspect-ratio: 100%">
                 <img class="object-fit-cover rounded" :alt="card.title" :src="card.images[0].url" />
               </div>
             </div>
             <div class="card-body">
               <div class="card-subtitle">{{ card.subtitle }}</div>
               <h3 class="card-title">
-                <a href="">{{ card.title }}</a>
+                <a href="">{{ card.description }}</a>
               </h3>
-              <p class="card-text">{{ card.description }}</p>
             </div>
           </article>
         </div>
@@ -83,7 +82,12 @@ section {
       }
 
       .card-title {
-        font-size: 1.25rem;
+        font-size: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* 限制为最多两行 */
+        -webkit-box-orient: vertical; /* 必须设置为竖直方向 */
+        overflow: hidden; /* 超出部分隐藏 */
+        text-overflow: ellipsis; /* 超出部分用省略号显示 */
 
         a {
           text-decoration: none;

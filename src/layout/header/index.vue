@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="/favicon/android-chrome-192x192.png" alt="Logo" height="50" class="d-inline-block align-text-top" />
+          <img src="/favicon/android-chrome-192x192.png" alt="Logo" style="height: 50px; width: auto" class="d-inline-block align-text-top" />
         </a>
         <button
           class="navbar-toggler"
@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item" v-for="(item, index) in menuList" :key="index">
-              <a :class="`nav-link ${index === 0 ? 'active' : ''}`" aria-current="page" @click="ClickHandler(item)">{{ item.title }}</a>
+              <a :class="`nav-link ${index === 0 ? 'active' : ''}`" :target="`${isBlankLink(item)}: '_blank': ''`" aria-current="page" :href="item.url">{{ item.title }}</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -33,8 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import {useRouter} from "vue-router";
-
 interface MenuItem {
   title: string;
   icon?: string;
@@ -51,14 +49,9 @@ const menuList: Array<MenuItem> = [
   {title: "Vue.js", url: "https://cn.vuejs.org/"},
   {title: "Vue Router", url: "https://router.vuejs.org/zh/"},
 ];
-const router = useRouter();
 
-const ClickHandler = (item: MenuItem) => {
-  if (item.url.startsWith("http")) {
-    window.open(item.url, "_blank");
-  } else {
-    router.push({path: item.url});
-  }
+const isBlankLink = (item: MenuItem) => {
+  return item.url.startsWith("http");
 };
 </script>
 <style lang="scss" scoped>
