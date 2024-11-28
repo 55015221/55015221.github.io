@@ -1,8 +1,8 @@
-import { UserConfig, ConfigEnv, loadEnv, defineConfig } from "vite";
+import {UserConfig, ConfigEnv, loadEnv, defineConfig} from "vite";
 import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-import { viteMockServe } from "vite-plugin-mock";
+import {resolve} from "path";
+import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
+import {viteMockServe} from "vite-plugin-mock";
 
 // 定义别名
 const alias: Record<string, string> = {
@@ -11,15 +11,22 @@ const alias: Record<string, string> = {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
+export default defineConfig(({mode}: ConfigEnv): UserConfig => {
   // 加载环境变量
   const env = loadEnv(mode, process.cwd());
-  console.log(env);
-  return {
+  console.log("env: ", env);
+  return <UserConfig>{
     root: process.cwd(),
-    resolve: { alias },
+    resolve: {alias},
     server: {
       open: true,
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+        },
+      },
     },
     plugins: [
       vue(),

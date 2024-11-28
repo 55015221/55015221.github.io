@@ -12,5 +12,9 @@
 }
 
 html, body {
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgb(110, 115, 130);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Segoe UI, Arial, Roboto, "PingFang SC", miui, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
 }

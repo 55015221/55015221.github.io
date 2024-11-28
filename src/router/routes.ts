@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from "vue-router";
+import {RouteRecordRaw} from "vue-router";
 
 const Layout = () => import("@/layout/index.vue");
 
@@ -6,7 +6,7 @@ const Layout = () => import("@/layout/index.vue");
 const staticRoutes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
+    name: "/",
     component: Layout,
     redirect: "/",
     children: [
@@ -14,34 +14,34 @@ const staticRoutes: Array<RouteRecordRaw> = [
         path: "/",
         name: "home",
         component: () => import("@/views/home/index.vue"),
-        meta: { title: "首页" },
+        meta: {title: "首页"},
       },
       {
         path: "product",
         name: "product",
         component: () => import("@/views/product/index.vue"),
-        meta: { title: "产品中心" },
+        meta: {title: "产品中心"},
       },
       {
         path: "about",
         name: "about",
         component: () => import("@/views/about/index.vue"),
-        meta: { title: "关于" },
+        meta: {title: "关于"},
       },
       {
         path: "tailwind",
         name: "tailwind",
         component: () => import("@/views/tailwind/index.vue"),
-        meta: { title: "Tailwind" },
+        meta: {title: "Tailwind"},
       },
       {
         path: "/:all(.*)*", // 404路由
         name: "notFound",
         component: () => import("@/views/error/index.vue"),
-        meta: { title: "找不到页面", hidden: true },
+        meta: {title: "找不到页面", hidden: true},
       },
     ],
   },
 ];
 
-export { staticRoutes };
+export {staticRoutes};

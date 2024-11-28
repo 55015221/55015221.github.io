@@ -1,34 +1,57 @@
 <template>
-  <section>
-    <Container>
-      <a-grid :cols="{ xs: 1, sm: 2, md: 2, lg: 3, xl: 4, xxl: 5 }" :colGap="10" :rowGap="10">
-        <a-grid-item v-for="card in cardList">
-          <a-card :bordered="false">
-            <template #cover>
-              <a class="image" href="" :title="card.title">
-                <img :alt="card.title" :src="card.thumbnail" />
-              </a>
-            </template>
-            <a-card-meta>
-              <template #title>
-                <div>
-                  <small>{{ card.subtitle }}</small>
+  <div class="bg-light">
+    <div class="container">
+      <section class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
+        <div class="col" v-for="(card, index) in cardList">
+          <article class="card border-0 rounded-0 shadow-sm">
+            <div class="card-media">
+              <div :id="`carouselExampleIndicators-${index}`" class="carousel slide" v-if="card.images.length > 1">
+                <div class="carousel-indicators">
+                  <button
+                    :data-bs-target="`#carouselExampleIndicators-${index}`"
+                    :data-bs-slide-to="i"
+                    :aria-label="image.title"
+                    :class="`${i === 0 ? 'active' : ''}`"
+                    v-for="(image, i) in card.images"
+                    type="button"
+                    aria-current="true"
+                  ></button>
                 </div>
+                <div class="carousel-inner">
+                  <div :class="`carousel-item ${i === 0 ? 'active' : ''}`" v-for="(image, i) in card.images">
+                    <div class="ratio" style="--bs-aspect-ratio: 75%">
+                      <img :src="image.url" class="object-fit-cover rounded" alt="..." />
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" :data-bs-target="`#carouselExampleIndicators-${index}`" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" :data-bs-target="`#carouselExampleIndicators-${index}`" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <div v-else class="ratio" style="--bs-aspect-ratio: 75%">
+                <img class="object-fit-cover rounded" :alt="card.title" :src="card.images[0].url" />
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-subtitle">{{ card.subtitle }}</div>
+              <h3 class="card-title">
                 <a href="">{{ card.title }}</a>
-              </template>
-              <template #description>
-                {{ card.description }}
-              </template>
-            </a-card-meta>
-          </a-card>
-        </a-grid-item>
-      </a-grid>
-    </Container>
-  </section>
+              </h3>
+              <p class="card-text">{{ card.description }}</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
-import Container from "@/components/Container.vue";
-import { computed } from "vue";
+import {computed} from "vue";
 
 defineOptions({
   name: "GoodCard",
@@ -52,54 +75,24 @@ const cardList = computed(() => {
 <style scoped lang="scss">
 section {
   padding: 30px 0;
-  background: rgba(247, 247, 247, 1);
-}
 
-.arco-card:hover {
-  //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+  .card {
+    .card-body {
+      .card-subtitle {
+        font-size: 0.8rem;
+      }
 
-  .image {
-    transform: scale(1.12);
-  }
-}
+      .card-title {
+        font-size: 1.25rem;
 
-:deep(.arco-card-cover) {
-  padding: 0.6rem;
-}
+        a {
+          text-decoration: none;
+          color: #222;
+        }
+      }
 
-.arco-card {
-  height: 100%;
-  border-radius: 6px;
-
-  .arco-card-meta-title {
-    font-size: 1.2rem;
-  }
-
-  .arco-card-meta-description {
-    font-size: 1rem;
-  }
-
-  .image {
-    position: relative;
-    background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100px%22%20height%3D%22100px%22%20viewBox%3D%220%200%20100%20100%22%20preserveAspectRatio%3D%22xMidYMid%22%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M24.3%2C30C11.4%2C30%2C5%2C43.3%2C5%2C50s6.4%2C20%2C19.3%2C20c19.3%2C0%2C32.1-40%2C51.4-40%20C88.6%2C30%2C95%2C43.3%2C95%2C50s-6.4%2C20-19.3%2C20C56.4%2C70%2C43.6%2C30%2C24.3%2C30z%22%20stroke%3D%22%2356cfe1%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%22205.271142578125%2051.317785644531256%22%3E%3Canimate%20attributeName%3D%22stroke-dashoffset%22%20calcMode%3D%22linear%22%20values%3D%220%3B256.58892822265625%22%20keyTimes%3D%220%3B1%22%20dur%3D%221%22%20begin%3D%220s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Fpath%3E%3C%2Fsvg%3E")
-      center no-repeat;
-    background-size: 20% 20%;
-    transition: all ease-in-out 0.5s;
-
-    &:before {
-      padding-top: 100%;
-      content: "";
-      display: block;
-    }
-
-    img {
-      border: 0;
-      vertical-align: middle;
-      max-width: 100%;
-      position: absolute;
-      inset: 0;
-      object-fit: contain;
+      .card-text {
+      }
     }
   }
 }
