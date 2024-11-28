@@ -1,43 +1,63 @@
 <template>
-  <section>
-    <Container>
-      <div>
-        <div class="flex">
-          <div class="logo">
-            <img src="/favicon/android-chrome-192x192.png" :height="60" />
-          </div>
-          <a-menu mode="horizontal" :default-selected-keys="['/']" @menu-item-click="ClickHandler">
-            <a-menu-item v-for="row in menuList" :key="row.link">
-              {{ row.label }}
-            </a-menu-item>
-          </a-menu>
+  <section class="shadow-lg pb-5">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="/favicon/android-chrome-192x192.png" alt="Logo" height="50" class="d-inline-block align-text-top" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" v-for="(item, index) in menuList" :key="index">
+              <a :class="`nav-link ${index === 0 ? 'active' : ''}`" aria-current="page" @click="ClickHandler(item)">{{ item.title }}</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
       </div>
-    </Container>
+    </nav>
   </section>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
-import Container from "@/components/Container.vue";
+import {useRouter} from "vue-router";
 
-const menuList = [
-  { label: "首页", link: "/" },
-  { label: "关于", link: "/about" },
-  { label: "产品中心", link: "/product" },
-  { label: "Tailwind CSS", link: "/tailwind" },
-  { label: "Vite 官方中文文档", link: "https://cn.vitejs.dev/" },
-  { label: "Arco Design", link: "https://arco.design/" },
-  { label: "Vue.js", link: "https://cn.vuejs.org/" },
-  { label: "Vue Router", link: "https://router.vuejs.org/zh/" },
+interface MenuItem {
+  title: string;
+  icon?: string;
+  url: string;
+}
+
+const menuList: Array<MenuItem> = [
+  {title: "首页", url: "/"},
+  {title: "关于", url: "/about"},
+  {title: "产品中心", url: "/product"},
+  {title: "Tailwind CSS", url: "/tailwind"},
+  {title: "Vite 官方中文文档", url: "https://cn.vitejs.dev/"},
+  {title: "Arco Design", url: "https://arco.design/"},
+  {title: "Vue.js", url: "https://cn.vuejs.org/"},
+  {title: "Vue Router", url: "https://router.vuejs.org/zh/"},
 ];
 const router = useRouter();
 
-const ClickHandler = (key: string) => {
-  if (key.startsWith("http")) {
-    window.open(key, "_blank");
+const ClickHandler = (item: MenuItem) => {
+  if (item.url.startsWith("http")) {
+    window.open(item.url, "_blank");
   } else {
-    router.push({ path: key });
+    router.push({path: item.url});
   }
 };
 </script>
@@ -45,21 +65,6 @@ const ClickHandler = (key: string) => {
 section {
   background-color: #f4f7fc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.arco-menu-light .arco-menu-item,
-.arco-menu-light .arco-menu-group-title,
-.arco-menu-light .arco-menu-pop-header,
-.arco-menu-light .arco-menu-inline-header {
-  background: none;
-}
-
-.flex {
-  display: flex;
-}
-
-.arco-menu-light {
-  background: unset;
 }
 
 .logo {
