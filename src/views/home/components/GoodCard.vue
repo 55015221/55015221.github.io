@@ -1,41 +1,17 @@
 <template>
   <div class="bg-light">
     <div class="container">
-      <section class="row g-2 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5">
-        <div class="col" v-for="(card, index) in cardList">
-          <article class="card border-0 shadow">
+      <section class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-4">
+        <div class="col" v-for="(card, index) in cardList" :key="index">
+          <article class="card">
             <div class="card-media">
-              <div :id="`carouselExampleIndicators-${index}`" class="carousel slide" v-if="card.images.length > 1">
-                <div class="carousel-indicators">
-                  <button
-                    :data-bs-target="`#carouselExampleIndicators-${index}`"
-                    :data-bs-slide-to="i"
-                    :aria-label="image.title"
-                    :class="`${i === 0 ? 'active' : ''}`"
-                    v-for="(image, i) in card.images"
-                    type="button"
-                    aria-current="true"
-                  ></button>
-                </div>
-                <div class="carousel-inner">
-                  <div :class="`carousel-item ${i === 0 ? 'active' : ''}`" v-for="(image, i) in card.images">
-                    <div class="ratio" style="--bs-aspect-ratio: 100%">
-                      <img :src="image.url" class="object-fit-cover rounded" alt="..." />
-                    </div>
+              <Swiper :modules="[EffectFade, Navigation, Pagination, Controller]" :pagination="{clickable: true}">
+                <SwiperSlide v-for="image in card.images" :key="image.id">
+                  <div class="ratio" style="--bs-aspect-ratio: 100%">
+                    <img class="object-fit-cover rounded" :alt="card.title" :src="image.url" />
                   </div>
-                </div>
-                <button class="carousel-control-prev" type="button" :data-bs-target="`#carouselExampleIndicators-${index}`" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" :data-bs-target="`#carouselExampleIndicators-${index}`" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-              <div v-else class="ratio" style="--bs-aspect-ratio: 100%">
-                <img class="object-fit-cover rounded" :alt="card.title" :src="card.images[0].url" />
-              </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
             <div class="card-body">
               <div class="card-subtitle">{{ card.subtitle }}</div>
@@ -51,6 +27,11 @@
 </template>
 <script setup lang="ts">
 import {computed} from "vue";
+import {EffectFade, Pagination, Controller, Navigation} from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 defineOptions({
   name: "GoodCard",
@@ -76,6 +57,16 @@ section {
   padding: 30px 0;
 
   .card {
+    border: 0;
+
+    &:hover {
+      box-shadow: var(--bs-box-shadow);
+    }
+
+    .card-media {
+      padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    }
+
     .card-body {
       .card-subtitle {
         font-size: 0.8rem;

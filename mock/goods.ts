@@ -25,6 +25,7 @@ export default [
             },
             "contentType|0-3": 0,
             "serviceUnreadCount|0-10": 0,
+            "badge|0-2": [Mock.Random.ctitle(3, 5)],
             "images|1-3": [
               {
                 id: "@id",
