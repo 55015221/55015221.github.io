@@ -1,11 +1,13 @@
 <template>
   <Carousel />
   <Card :data="cardList" :loading="loading" />
-  <div class="bg-light">
+  <div class="bg-white">
     <div class="container">
-      <section class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-4">
+      <section class="row g-4 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-4">
         <div class="col" v-for="(card, index) in cardList" :key="index">
-          <Card :data="card"></Card>
+          <template v-if="index < 6">
+            <Card :data="card"></Card>
+          </template>
         </div>
       </section>
     </div>
@@ -21,19 +23,8 @@ import Card from "@/components/Card.vue";
 import {onMounted, reactive, ref} from "vue";
 import {fetchData} from "@/api/goods.ts";
 
-interface CardDataType {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  content: string;
-  thumbnail: string;
-  icon: string;
-  created_at: string;
-}
-
 const loading = ref(false);
-const cardList = reactive(<Array<CardDataType>>[]);
+const cardList = reactive(<Array<Card>>[]);
 
 onMounted(async () => {
   await fetchData().then((response) => {

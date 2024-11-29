@@ -1,9 +1,9 @@
 <template>
-  <section class="shadow-lg pb-5">
+  <section class="shadow-lg mb-5">
     <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="/favicon/android-chrome-192x192.png" alt="Logo" style="height: 50px; width: auto" class="d-inline-block align-text-top" />
+          <img src="/favicon/android-chrome-192x192.png" alt="Logo" style="height: 35px; width: auto" class="d-inline-block align-text-top" />
         </a>
         <button
           class="navbar-toggler"

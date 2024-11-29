@@ -4,29 +4,30 @@
     <div class="card-label">
       <span :class="`badge ${index === 0 ? 'text-bg-danger' : 'text-bg-success'}`" v-for="(badge, index) in data.badge" :key="index">{{ badge }}</span>
     </div>
-
     <!-- Action -->
     <div class="card-action">
-      <button><i class="bi bi-heart"></i></button>
+      <button class="animate-pulse"><i class="bi bi-heart animate-target"></i></button>
       <button><i class="bi bi-brightness-high"></i></button>
     </div>
     <!-- Media -->
-    <figure class="card-media">
-      <Swiper :modules="[Navigation, Pagination, EffectFade, A11y, Controller]" :slides-per-view="1" :pagination="{clickable: true}" @swiper="onSwiper" @slideChange="onSlideChange">
-        <SwiperSlide v-for="(image, _) in data.images" :key="image.id">
-          <div class="ratio" style="--bs-aspect-ratio: 100%">
-            <img class="object-fit-cover rounded" :alt="image.title" :src="image.url" />
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </figure>
+    <a href="" title="">
+      <figure class="card-media">
+        <Swiper :modules="[Navigation, Pagination, EffectFade, A11y, Controller]" :slides-per-view="1" :pagination="{clickable: true}" @swiper="onSwiper" @slideChange="onSlideChange">
+          <SwiperSlide v-for="(image, _) in data.images" :key="image.id">
+            <div class="ratio" style="--bs-aspect-ratio: 100%">
+              <img class="object-fit-cover rounded" :alt="image.title" :src="image.url" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </figure>
+    </a>
 
     <!-- Body -->
     <div class="card-body">
       <div class="subtitle">{{ data.subtitle }}</div>
-      <a class="stretched-link1" href="">
-        <h3 class="title animate-underline">{{ data.title }}{{ data.description }}</h3>
-      </a>
+      <h3 class="title">
+        <a href="">{{ data.title }}{{ data.description }}</a>
+      </h3>
     </div>
   </article>
 </template>
@@ -44,28 +45,9 @@ defineOptions({
   name: "Card",
 });
 
-interface ImageModel {
-  id: number;
-  title: string;
-  url: string;
-}
-
-interface CardModel {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  content: string;
-  thumbnail: string;
-  icon: string;
-  created_at: string;
-  images: Array<ImageModel>;
-  badge: Array<string>;
-}
-
 const props = defineProps({
   data: {
-    type: Object as () => CardModel,
+    type: Object as () => Card,
     default: () => {},
   },
 });
@@ -81,6 +63,37 @@ console.log("Props", props.data);
 </script>
 
 <style scoped lang="scss">
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.25);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  &:hover,
+  &:focus-visible {
+    .animate-target {
+      animation: pulse 0.9s;
+    }
+  }
+
+  .animate-target::after {
+    display: none;
+  }
+}
+
 .card {
   border: 0;
   position: relative;
@@ -91,30 +104,33 @@ console.log("Props", props.data);
 
   .card-label {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 20px;
+    left: 20px;
     display: flex;
     gap: 5px;
+    z-index: 100;
 
     .badge {
-      font-size: 0.75em;
-      border-radius: 0.33em;
+      font-size: 0.75rem;
+      border-radius: 0.33rem;
       line-height: 1;
       display: inline-block;
       font-weight: 500;
       text-align: center;
       vertical-align: baseline;
       white-space: nowrap;
-      padding: 0.35em 0.65em;
+      padding: 0.35rem 0.65rem;
     }
   }
 
   .card-action {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     display: flex;
+    flex-direction: column;
     gap: 5px;
+    z-index: 100;
 
     button {
       padding: 0;
@@ -124,25 +140,32 @@ console.log("Props", props.data);
       align-content: center;
       justify-content: center;
       border-radius: 0.5rem;
+
+      i {
+        transition: all 0.25s ease-in-out;
+      }
     }
   }
 
   .card-media {
+    margin: 0;
     padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    background: rgb(245, 247, 250);
   }
 
   .card-body {
-    .subtitle {
-      font-size: 1rem;
-    }
-
     .title {
-      font-size: 1.25rem;
+      font-size: 1rem;
       display: -webkit-box;
-      --webkit-line-clamp: 2; /* 限制为最多两行 */
-      --webkit-box-orient: vertical; /* 必须设置为竖直方向 */
+      -webkit-box-orient: vertical; /* 必须设置为竖直方向 */
+      -webkit-line-clamp: 2; /* 限制为最多两行 */
+      -ms-line-clamp: 2;
       overflow: hidden; /* 超出部分隐藏 */
       text-overflow: ellipsis; /* 超出部分用省略号显示 */
+
+      .subtitle {
+        font-size: 0.85rem;
+      }
 
       a {
         text-decoration: none;
