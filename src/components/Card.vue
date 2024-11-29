@@ -1,5 +1,5 @@
 <template>
-  <article class="card">
+  <article class="card h-100">
     <!-- Label -->
     <div class="card-label">
       <span :class="`badge ${index === 0 ? 'text-bg-danger' : 'text-bg-success'}`" v-for="(badge, index) in data.badge" :key="index">{{ badge }}</span>
@@ -24,9 +24,9 @@
 
     <!-- Body -->
     <div class="card-body">
-      <div class="subtitle">{{ data.subtitle }}</div>
+      <div class="subtitle text-muted">{{ data.subtitle }}</div>
       <h3 class="title">
-        <a href="">{{ data.title }}{{ data.description }}</a>
+        <a class="" href="">{{ data.title }}</a>
       </h3>
     </div>
   </article>
@@ -100,15 +100,22 @@ console.log("Props", props.data);
 
   &:hover {
     box-shadow: var(--bs-box-shadow);
-  }
 
-  .card-label {
+    .card-action {
+      display: flex;
+    }
+  }
+  .card-label,
+  .card-action {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 10px;
     display: flex;
     gap: 5px;
     z-index: 100;
+  }
+
+  .card-label {
+    left: 10px;
 
     .badge {
       font-size: 0.75rem;
@@ -124,13 +131,9 @@ console.log("Props", props.data);
   }
 
   .card-action {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
+    right: 10px;
     flex-direction: column;
-    gap: 5px;
-    z-index: 100;
+    display: none;
 
     button {
       padding: 0;
@@ -149,13 +152,13 @@ console.log("Props", props.data);
 
   .card-media {
     margin: 0;
-    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-    background: rgb(245, 247, 250);
+    //padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   }
 
   .card-body {
     .title {
-      font-size: 1rem;
+      font-size: 1.15rem;
+      line-height: 1.5;
       display: -webkit-box;
       -webkit-box-orient: vertical; /* 必须设置为竖直方向 */
       -webkit-line-clamp: 2; /* 限制为最多两行 */
@@ -169,7 +172,7 @@ console.log("Props", props.data);
 
       a {
         text-decoration: none;
-        color: #222;
+        color: var(--bs-gray-700);
       }
     }
   }
