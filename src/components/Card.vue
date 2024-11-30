@@ -1,5 +1,5 @@
 <template>
-  <article class="card h-100">
+  <article class="card h-100 rounded-0">
     <!-- Label -->
     <div class="card-label">
       <span :class="`badge ${index === 0 ? 'text-bg-danger' : 'text-bg-success'}`" v-for="(badge, index) in data.badge" :key="index">{{ badge }}</span>
