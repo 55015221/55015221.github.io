@@ -105,6 +105,7 @@ console.log("Props", props.data);
       display: flex;
     }
   }
+
   .card-label,
   .card-action {
     position: absolute;
@@ -157,7 +158,7 @@ console.log("Props", props.data);
 
   .card-body {
     .title {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       line-height: 1.5;
       display: -webkit-box;
       -webkit-box-orient: vertical; /* 必须设置为竖直方向 */
