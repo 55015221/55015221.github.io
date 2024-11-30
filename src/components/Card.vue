@@ -1,21 +1,21 @@
 <template>
-  <article class="card h-100 rounded-0">
+  <article class="card h-100">
     <!-- Label -->
     <div class="card-label">
       <span :class="`badge ${index === 0 ? 'text-bg-danger' : 'text-bg-success'}`" v-for="(badge, index) in data.badge" :key="index">{{ badge }}</span>
     </div>
     <!-- Action -->
-    <div class="card-action">
-      <button class="animate-pulse"><i class="bi bi-heart animate-target"></i></button>
+    <div class="card-action animate-pulse">
+      <button class="animate-target"><i class="bi bi-heart"></i></button>
       <button><i class="bi bi-brightness-high"></i></button>
     </div>
     <!-- Media -->
     <a href="" title="">
       <figure class="card-media">
-        <Swiper :modules="[Navigation, Pagination, EffectFade, A11y, Controller]" :slides-per-view="1" :pagination="{clickable: true}" @swiper="onSwiper" @slideChange="onSlideChange">
+        <Swiper :modules="[Navigation, Pagination, EffectFade, A11y, Controller]" :slides-per-view="1" :pagination="{clickable: true}" @slideChange="onSlideChange">
           <SwiperSlide v-for="(image, _) in data.images" :key="image.id">
-            <div class="ratio" style="--bs-aspect-ratio: 100%">
-              <img class="object-fit-cover rounded" :alt="image.title" :src="image.url" />
+            <div class="ratio" style="--bs-aspect-ratio: 75%">
+              <img class="object-fit-cover" :alt="image.title" :src="image.url" />
             </div>
           </SwiperSlide>
         </Swiper>
@@ -52,9 +52,6 @@ const props = defineProps({
   },
 });
 
-const onSwiper = (swiper: SwiperContainer) => {
-  console.log(swiper);
-};
 const onSlideChange = () => {
   console.log("slide change");
 };
@@ -95,15 +92,11 @@ console.log("Props", props.data);
 }
 
 .card {
-  border: 0;
+  border: none;
   position: relative;
 
   &:hover {
     box-shadow: var(--bs-box-shadow);
-
-    .card-action {
-      display: flex;
-    }
   }
 
   .card-label,
@@ -134,7 +127,6 @@ console.log("Props", props.data);
   .card-action {
     right: 10px;
     flex-direction: column;
-    display: none;
 
     button {
       padding: 0;
@@ -153,7 +145,7 @@ console.log("Props", props.data);
 
   .card-media {
     margin: 0;
-    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    //padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   }
 
   .card-body {
