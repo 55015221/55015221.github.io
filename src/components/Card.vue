@@ -153,7 +153,7 @@ console.log("Props", props.data);
 
   .card-media {
     margin: 0;
-    //padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   }
 
   .card-body {

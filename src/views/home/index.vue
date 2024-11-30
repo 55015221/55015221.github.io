@@ -2,7 +2,7 @@
   <Carousel />
   <div style="background-color: rgb(239, 241, 243)">
     <div class="container">
-      <section class="row g-3 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-4">
+      <section class="row g-3 row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5">
         <div class="col" v-for="(card, index) in cardList" :key="index">
           <template v-if="index < 6">
             <Card :data="card"></Card>
