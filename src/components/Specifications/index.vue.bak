@@ -1,0 +1,133 @@
+<template>
+	<div>
+		{{ modelValue }}
+		<el-form :model="modelValue" label-position="left" label-width="120px">
+			<!-- 选择规格 -->
+			<!-- <el-form-item label="添加规格模板">
+				<el-select v-model="selectValue" multiple clearable placeholder="请选择" style="width: 240px">
+					<el-option v-for="spec in specificationList" :key="spec.id" :label="spec.title" :value="spec.id" />
+				</el-select>
+				<el-button>添加规格模板</el-button>
+			</el-form-item> -->
+
+			<el-divider />
+
+			<!-- 生成新规格 -->
+			<!-- <el-form-item label="规格设置">
+				<SpecAdd />
+			</el-form-item> -->
+
+			<el-divider />
+			<!-- 选择规格展示 -->
+			<el-form-item label="选择规格">
+				<SpecSelect v-model="tempValues"></SpecSelect>
+			</el-form-item>
+
+			<el-divider />
+			<!-- 配置规格 -->
+			<SpecSet v-model="tempValues"></SpecSet>
+		</el-form>
+	</div>
+</template>
+
+<script setup lang="ts">
+import { computed, nextTick, onMounted, PropType, ref, watch } from 'vue';
+import AttributeService from '@/api/attribute';
+import Draggable from 'vuedraggable';
+import SpecTable from './components/SpecTable.vue';
+import SpecSelect from './components/SpecSelect.vue';
+import SpecSet from './components/SpecSet.vue';
+import SpecAdd from './components/SpecAdd.vue';
+
+interface HeaderInterface {
+	label: string;
+	prop: string;
+}
+
+interface SpecificationInterface {
+	id?: number;
+	title: string;
+	inputVisible?: boolean;
+	inputValue?: string;
+	values?: Array<any>;
+}
+
+const props = defineProps({
+	modelValue: {
+		type: Array as PropType<Array<SpecificationInterface>[]>,
+		default: () => [],
+	},
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+// 规格总数据
+const specificationList = ref<Array<SpecificationInterface>>([]);
+const specifications = ref();
+
+// 选择规格模板
+
+const handleSelectTemplate = () => {};
+
+// 选择的规格组
+const selectValue = computed(() => {
+	let results = specificationList.value.filter((row) => {
+		return row.values?.filter((val) => {
+			return props.modelValue.map((item) => {
+				if (val.title == item.title[0]) {
+					return val;
+				}
+			});
+		});
+	});
+
+	return results.map((x) => x.id);
+});
+// 规格临时数据
+const tempValues = computed(() => {
+	let result = specificationList.value.filter((item) => {
+		if (selectValue.value.includes(item.id)) {
+			return item;
+		}
+	});
+	return result;
+});
+
+watch(
+	() => specifications.value,
+	(newValue, oldValue) => {
+		emit('update:modelValue', newValue);
+	}
+);
+
+// 计算选择的值
+watch(
+	() => selectValue.value,
+	(newValue, oldValue) => {
+		console.log(newValue);
+	}
+);
+
+// 获取规格列表数据
+const getSpecificationList = async () => {
+	await AttributeService.index({ per_page: 1000, parent_id: 0, is_spec: 1 })
+		.then((response: Response) => {
+			Object.assign(specificationList.value, response.data.data);
+		})
+		.finally(() => {});
+};
+
+// 选择规格
+const handleSelectConfirm = (val: any) => {
+	console.log(val);
+	tempValues.value = specificationList.value.filter((item) => val.indexOf(item.id) >= 0);
+	console.log(tempValues.value);
+};
+
+onMounted(async () => {
+	await getSpecificationList();
+	// nextTick(() => {
+	//     handleSelectConfirm();
+	// })
+});
+</script>
